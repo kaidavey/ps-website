@@ -1,0 +1,53 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: stretch;
+}
+
+.field {
+  /* Grows to fill the row, wraps to its own line when it cannot hold 16rem.
+     Two inputs and a button therefore sit inline on desktop and stack on a
+     phone with no breakpoint involved. */
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid transparent;
+  border-radius: var(--radius-input);
+  background-color: var(--color-surface);
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.input:hover {
+  border-color: var(--color-control-border);
+}
+
+.submit {
+  flex: 0 0 auto;
+  border-radius: var(--radius-input);
+  padding-inline: var(--space-lg);
+}
+
+.status {
+  font-size: var(--font-size-caption);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}

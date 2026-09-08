@@ -39,6 +39,11 @@ integration would both fail and leak the token.
    with the integration, then copy the 32-character ID from its URL into the
    matching `NOTION_*_DATABASE_ID` variable.
 
+The home page reads three collections — `gallery`, `pillars` and `events`.
+`scripts/notion/collections.ts` lists the columns each database needs. Until
+they exist the committed JSON carries the copy from the Figma design, so the
+site builds and renders as designed.
+
 **Publishing a content change**
 
 ```bash

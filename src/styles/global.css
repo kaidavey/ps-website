@@ -10,15 +10,23 @@
 
 :root {
   color-scheme: light;
-  font-family: var(--font-sans);
-  font-size: var(--font-size-md);
-  line-height: var(--leading-normal);
   color: var(--color-text);
   background-color: var(--color-bg);
-  font-synthesis: none;
+  /*
+   * Deliberately NO font-size here. `rem` must stay anchored to the browser's
+   * root size — that is the user's text-size preference, and every clamp() in
+   * tokens.css is calibrated against a 16px root. Setting a font-size on
+   * :root rescales the rem unit itself and silently inflates the entire
+   * design system. Body text size belongs on body, below.
+   */
 }
 
 body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-snug);
+  font-synthesis: none;
   /* Guarantees no page can scroll sideways, whatever a child does wrong. */
   overflow-x: clip;
 }
@@ -26,12 +34,12 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-media);
 }
 
 ::selection {
-  background-color: var(--color-accent-subtle);
-  color: var(--color-accent-active);
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
 }
 
 /* Visually hidden, still read by screen readers. Used for skip links,

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "community",
+    "slug": "community",
+    "title": "Community",
+    "description": "Learn, grow, and make life-long friends along the way.",
+    "image": {
+      "src": "/img/pillar-community.svg",
+      "alt": "Product Space fellows celebrating together",
+      "width": 446,
+      "height": 300
+    }
+  },
+  {
+    "id": "fellowship",
+    "slug": "fellowship",
+    "title": "Fellowship",
+    "description": "Build skills through mentor-led workshops and sprints.",
+    "image": {
+      "src": "/img/pillar-fellowship.svg",
+      "alt": "Fellows at a Product Space workshop",
+      "width": 428,
+      "height": 300
+    }
+  },
+  {
+    "id": "projects",
+    "slug": "projects",
+    "title": "Projects",
+    "description": "Ship work for companies from Fortune 500s to YC startups.",
+    "image": {
+      "src": "/img/pillar-projects.svg",
+      "alt": "A client project shown on a laptop",
+      "width": 421,
+      "height": 303
+    }
+  }
+]

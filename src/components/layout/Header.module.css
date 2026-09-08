@@ -2,8 +2,18 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background-color: var(--color-bg);
-  box-shadow: var(--shadow-md);
+  /*
+   * Transparent by default so it sits over the hero exactly as designed.
+   * `.scrolled` fades in a backdrop once the page moves, which stops body
+   * copy from running underneath the logo further down the page.
+   */
+  background-color: rgb(255 255 255 / 0);
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+.scrolled {
+  background-color: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(12px);
 }
 
 .bar {
@@ -12,53 +22,15 @@
   justify-content: space-between;
   gap: var(--space-sm);
   min-height: var(--header-height);
-  padding-block: var(--space-2xs);
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  flex-shrink: 0;
-  font-weight: var(--weight-bold);
-  font-size: var(--font-size-lg);
-  letter-spacing: var(--tracking-snug);
-  color: var(--color-accent);
-}
-
-/* --- Desktop navigation -------------------------------------------------- */
-
-.nav {
-  display: none;
-  align-items: center;
-  gap: clamp(var(--space-xs), 1.6vw, var(--space-md));
-}
-
-.actions {
-  display: none;
-  flex-shrink: 0;
-}
-
-.link {
-  color: var(--color-accent);
-  font-weight: var(--weight-semibold);
-  font-size: var(--font-size-sm);
-  letter-spacing: var(--tracking-snug);
+  font-size: var(--font-size-body);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
   white-space: nowrap;
-  padding-block: var(--space-3xs);
-  border-bottom: 2px solid transparent;
-  transition: border-color var(--duration-base) var(--ease-out);
 }
-
-.link:hover {
-  border-bottom-color: var(--color-accent-soft);
-}
-
-.link[aria-current='page'] {
-  border-bottom-color: var(--color-accent);
-}
-
-/* --- Mobile disclosure --------------------------------------------------- */
 
 .toggle {
   display: inline-flex;
@@ -67,49 +39,84 @@
   /* 44px minimum hit target — WCAG 2.5.8. */
   width: 2.75rem;
   height: 2.75rem;
-  margin-inline-end: calc(var(--space-3xs) * -1);
-  border-radius: var(--radius-sm);
-  color: var(--color-accent);
+  /* Pulls the optical edge of the icon back onto the gutter line. */
+  margin-inline-end: -0.6rem;
+  border-radius: var(--radius-media);
+  color: var(--color-text);
 }
 
+/* --- Menu overlay --------------------------------------------------- */
+
+/*
+ * Native <dialog> opened with showModal(). The platform then supplies focus
+ * trapping, Escape-to-close, and inertness for the page behind it — all of
+ * which would otherwise be hand-written and easy to get subtly wrong.
+ * It renders in the top layer, so no z-index is needed.
+ */
 .panel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-  padding-block: var(--space-xs) var(--space-md);
-  border-top: 1px solid var(--color-border);
-  /* Long nav lists must still be reachable on a short landscape phone. */
-  max-height: calc(100dvh - var(--header-height));
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  border: none;
+  padding: var(--header-height) var(--gutter) var(--space-xl);
+  background-color: rgb(255 255 255 / 0.96);
+  backdrop-filter: blur(20px);
+  color: var(--color-text);
+  /* A long menu on a short landscape phone must still be reachable. */
   overflow-y: auto;
   overscroll-behavior: contain;
 }
 
+.panel:not([open]) {
+  display: none;
+}
+
+.panel[open] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.panel::backdrop {
+  background-color: rgb(255 255 255 / 0.4);
+}
+
 .panelLink {
-  padding-block: var(--space-2xs);
-  font-size: var(--font-size-lg);
-  font-weight: var(--weight-semibold);
-  color: var(--color-accent);
+  font-size: var(--font-size-header);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text);
+  width: fit-content;
 }
 
 .panelLink[aria-current='page'] {
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+  color: var(--color-accent);
 }
 
-.panelAction {
-  margin-block-start: var(--space-2xs);
+.panelActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-sm);
 }
 
-/* Above the lg breakpoint (1024px, see src/lib/breakpoints.ts) the full
-   navigation fits, so the disclosure is removed entirely. */
-@media (min-width: 1024px) {
-  .nav,
-  .actions {
-    display: flex;
-  }
+/* The overlay repeats the header bar so its close button lands exactly where
+   the menu button was, and so focus can stay trapped inside the dialog. */
+.panelBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  min-height: var(--header-height);
+  margin-block-start: calc(var(--header-height) * -1);
+}
 
-  .toggle,
-  .panel {
-    display: none;
-  }
+.panelNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
 }

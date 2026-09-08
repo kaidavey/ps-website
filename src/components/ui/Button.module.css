@@ -4,15 +4,18 @@
   justify-content: center;
   gap: var(--space-2xs);
   border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  font-weight: var(--weight-semibold);
-  line-height: var(--leading-snug);
+  border-radius: var(--radius-control);
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
   text-align: center;
   cursor: pointer;
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
+    opacity var(--duration-base) var(--ease-out);
 }
 
 .button:disabled,
@@ -21,56 +24,46 @@
   pointer-events: none;
 }
 
-/* Sizes — padding uses the fluid space scale, so buttons breathe with the page. */
+/* Sizes. Padding uses the fluid space scale so controls breathe with the
+   page; the design's 30x12 becomes the desktop end of the `md` ramp. */
 .sizeSm {
   padding: var(--space-2xs) var(--space-sm);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-caption);
 }
 .sizeMd {
   padding: var(--space-xs) var(--space-md);
-  font-size: var(--font-size-md);
 }
 .sizeLg {
   padding: var(--space-sm) var(--space-lg);
-  font-size: var(--font-size-lg);
 }
 
-/* Variants */
-.primary {
-  background-color: var(--color-accent);
-  color: var(--color-text-on-accent);
+/*
+ * Dark — the primary action. A bottom-to-top black -> #666 gradient in the
+ * design, so `background-image` carries the fill and hover shifts opacity
+ * rather than colour (a gradient cannot be transitioned).
+ */
+.dark {
+  background-image: var(--color-control-dark-bg);
+  border-color: var(--color-control-dark-border);
+  color: var(--color-text-inverse);
 }
-.primary:hover {
-  background-color: var(--color-accent-hover);
-}
-.primary:active {
-  background-color: var(--color-accent-active);
-}
-
-.secondary {
-  background-color: var(--color-accent-soft);
-  color: var(--color-text-on-accent);
-}
-.secondary:hover {
-  background-color: var(--color-accent);
+.dark:hover {
+  opacity: 0.88;
 }
 
-.outline {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+/* Light — the secondary action. */
+.light {
+  background-color: var(--color-control-bg);
+  border-color: var(--color-control-border);
+  border-width: 2px;
+  color: var(--color-control-text);
+  text-transform: capitalize;
 }
-.outline:hover {
-  background-color: var(--color-accent-subtle);
-}
-
-.ghost {
-  color: var(--color-accent);
-}
-.ghost:hover {
-  background-color: var(--color-accent-subtle);
+.light:hover {
+  border-color: var(--color-text-placeholder);
 }
 
-/* Fills its container — use for stacked buttons on narrow screens. */
+/* Fills its container — used for stacked buttons on narrow screens. */
 .block {
   width: 100%;
 }

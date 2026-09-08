@@ -1,0 +1,77 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-md);
+  /* Calendar keeps its natural width; the event list takes the rest and
+     drops below it once the pair no longer fits. */
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  align-items: start;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-input);
+  background-color: var(--color-surface-panel);
+  min-height: 100%;
+}
+
+.panelTitle {
+  font-size: var(--font-size-body);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  padding: var(--space-sm);
+  border-radius: var(--radius-media);
+  background-color: var(--color-bg);
+}
+
+.eventTitle {
+  font-size: var(--font-size-body);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text);
+}
+
+.eventMeta {
+  font-size: var(--font-size-caption);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text-muted);
+}
+
+.eventLink {
+  align-self: flex-start;
+  margin-block-start: var(--space-3xs);
+  font-size: var(--font-size-caption);
+  font-weight: var(--weight-medium);
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.empty {
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}

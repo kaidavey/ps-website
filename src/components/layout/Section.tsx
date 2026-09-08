@@ -6,7 +6,7 @@ type SectionProps = ComponentPropsWithoutRef<'section'> & {
   as?: ElementType
   /** Vertical rhythm. Sections own their block padding; children never do. */
   space?: 'none' | 'sm' | 'md' | 'lg'
-  tone?: 'default' | 'subtle' | 'accent' | 'inverse'
+  tone?: 'default' | 'surface'
 }
 
 const spaceClass = {
@@ -18,9 +18,7 @@ const spaceClass = {
 
 const toneClass = {
   default: styles.toneDefault,
-  subtle: styles.toneSubtle,
-  accent: styles.toneAccent,
-  inverse: styles.toneInverse,
+  surface: styles.toneSurface,
 } as const
 
 /**

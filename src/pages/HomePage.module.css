@@ -1,32 +1,10 @@
-.intro {
-  display: grid;
-  gap: var(--space-md);
-  /* Column count is content-driven rather than breakpoint-driven: the grid
-     wraps to one column whenever a track would fall under 20rem. This keeps
-     the layout correct at every width, including inside narrow containers. */
-  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
-  align-items: center;
-}
-
-.heading {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-5xl);
-  font-weight: var(--weight-medium);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-}
-
-.accent {
-  color: var(--color-accent);
-}
-
-.lede {
-  max-width: var(--measure);
-  margin-block-start: var(--space-sm);
-  font-size: var(--font-size-lg);
-  color: var(--color-text-muted);
-}
-
-.cta {
-  margin-block-start: var(--space-md);
+/*
+ * The page's vertical rhythm. The design puts 150px between content sections;
+ * `--space-3xl` is that value at desktop, scaling to 72px on a phone.
+ */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+  padding-block: var(--space-2xl) var(--space-3xl);
 }

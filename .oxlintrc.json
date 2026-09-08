@@ -20,7 +20,14 @@
 
     "react/react-in-jsx-scope": "off",
 
-    "import/no-unassigned-import": "off"
+    "import/no-unassigned-import": "off",
+
+    "jsx-a11y/no-noninteractive-tabindex": [
+      "error",
+      { "tags": ["section"], "roles": ["region"] }
+    ],
+
+    "jsx-a11y/no-redundant-roles": ["error", { "ul": ["list"] }]
   },
   "overrides": [
     {

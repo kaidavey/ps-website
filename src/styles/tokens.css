@@ -2,16 +2,19 @@
  * Design tokens — the single source of truth for every visual value.
  *
  * Two layers, and the distinction matters:
- *   1. PRIMITIVES (--purple-500, --font-size-lg) — raw values. Never referenced
+ *   1. PRIMITIVES (--ink-70, --font-size-title) — raw values. Never referenced
  *      directly by a component.
- *   2. SEMANTICS (--color-accent, --color-text-muted) — meaning. Components use
- *      only these, so a palette change is a one-file edit.
+ *   2. SEMANTICS (--color-text-muted, --color-surface) — meaning. Components
+ *      use only these, so a palette change is a one-file edit.
  *
  * Sizing is FLUID, not stepped. Every type and space token is a clamp() that
- * interpolates continuously between a 360px and a 1440px viewport, so layouts
+ * interpolates continuously between a 360px and 1440px viewport, so layouts
  * are correct at every width — including the ones between breakpoints, where
  * step-based systems look wrong. Media queries are then reserved for genuine
  * layout *rearrangement* (a row becoming a column), not resizing.
+ *
+ * Each ramp's MAXIMUM is the literal value from the Figma file, so at desktop
+ * width the page matches the design; the minimum is the small-screen value.
  *
  * The clamp() middle terms are `rem + vw` rather than pure `vw`, which keeps
  * text responsive to the user's browser font-size setting. Do not "simplify"
@@ -23,102 +26,97 @@
 :root {
   /* ---------------------------------------------------------------- *
    * Primitives — color
+   *
+   * The design is greyscale built from black at varying alpha, with a
+   * single purple accent. Alpha-based inks (rather than flat greys) keep
+   * text legible over the hero gradient and the photo carousel.
    * ---------------------------------------------------------------- */
 
-  /* Brand purple. Seeded from the current brand mark (#7F2D7F).
-     Replace wholesale once Figma variables are published. */
-  --purple-50: #f8f2f8;
-  --purple-100: #eddced;
-  --purple-200: #dbb9da;
-  --purple-300: #c78fc6;
-  --purple-400: #b265b0;
-  --purple-500: #964794;
-  --purple-600: #7f2d7f;
-  --purple-700: #67246a;
-  --purple-800: #4d1b50;
-  --purple-900: #331236;
+  --ink-100: #000000;
+  --ink-70: rgb(0 0 0 / 0.7);
+  --ink-50: rgb(0 0 0 / 0.5);
+  --ink-40: rgb(0 0 0 / 0.4);
+  --ink-30: rgb(0 0 0 / 0.3);
 
-  --neutral-0: #ffffff;
-  --neutral-50: #fafafa;
-  --neutral-100: #f4f4f5;
-  --neutral-200: #e5e5e8;
-  --neutral-300: #d4d4d8;
-  --neutral-400: #a1a1aa;
-  --neutral-500: #71717a;
-  --neutral-600: #52525b;
-  --neutral-700: #3f3f46;
-  --neutral-800: #27272a;
-  --neutral-900: #18181b;
-  --neutral-950: #0a0a0b;
+  --paper: #ffffff;
+  --paper-hero: #f9f9f9;
+  --paper-panel: #f8f8f8;
+  --paper-surface: #f6f6f6;
+  --paper-control: #ececec;
+
+  --line-control: #e7e7e7;
+  --line-dark: #767676;
+
+  --grey-label: #acacac;
+  --grey-control-text: #797979;
+
+  --accent-purple: #8e3abe;
+
+  /* Dark control fill. A gradient in the design, not a flat colour. */
+  --fill-dark: linear-gradient(to top, #000000, #666666);
 
   /* ---------------------------------------------------------------- *
    * Primitives — type
+   *
+   * Helvetica Neue is the design's typeface. It is present on macOS and
+   * iOS and absent on Windows and Android, where the stack falls back to
+   * Helvetica/Arial — metrically close, so the fluid scale still holds.
+   * No web font is loaded: it would be a render-blocking network
+   * dependency for a marginal gain. See docs/ARCHITECTURE.md.
    * ---------------------------------------------------------------- */
 
-  --font-sans:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
-  --font-heading: var(--font-sans);
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
 
-  /* Type scale — 360px floor, 1440px ceiling */
-  --font-size-2xs: clamp(0.75rem, 0.7292rem + 0.0926vw, 0.8125rem);
-  --font-size-xs: clamp(0.8125rem, 0.7917rem + 0.0926vw, 0.875rem);
-  --font-size-sm: clamp(0.875rem, 0.8333rem + 0.1852vw, 1rem);
-  --font-size-md: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
-  --font-size-lg: clamp(1.125rem, 1.0625rem + 0.2778vw, 1.3125rem);
-  --font-size-xl: clamp(1.3125rem, 1.2292rem + 0.3704vw, 1.5625rem);
-  --font-size-2xl: clamp(1.5625rem, 1.4375rem + 0.5556vw, 1.9375rem);
-  --font-size-3xl: clamp(1.8125rem, 1.625rem + 0.8333vw, 2.375rem);
-  --font-size-4xl: clamp(2.125rem, 1.8542rem + 1.2037vw, 2.9375rem);
-  --font-size-5xl: clamp(2.375rem, 1.9167rem + 2.037vw, 3.75rem);
-  --font-size-6xl: clamp(2.625rem, 2rem + 2.7778vw, 4.5rem);
+  /* Type — max values are the Figma sizes at the 1512px design width */
+  --font-size-display: clamp(2.75rem, 0.9583rem + 7.963vw, 8.125rem);
+  --font-size-title: clamp(1.875rem, 1.2917rem + 2.5926vw, 3.625rem);
+  --font-size-header: clamp(1.625rem, 1.25rem + 1.6667vw, 2.75rem);
+  --font-size-subtitle: clamp(1.25rem, 0.9167rem + 1.4815vw, 2.25rem);
+  --font-size-body: clamp(1.0625rem, 0.9167rem + 0.6481vw, 1.5rem);
+  --font-size-caption: clamp(0.9375rem, 0.8333rem + 0.463vw, 1.25rem);
 
-  --leading-tight: 1.1;
-  --leading-snug: 1.25;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.65;
+  /* Unitless, so they scale with the fluid sizes above. Figma's px line
+     heights divided by their px font sizes: 50/36, 34/24. */
+  --leading-display: 1;
+  --leading-tight: 1.12;
+  --leading-subtitle: 1.39;
+  --leading-body: 1.42;
 
+  /* Figma letter-spacing is a percentage of font size, so em is the
+     faithful unit — it tracks the fluid sizes automatically. */
+  --tracking-display: -0.06em;
   --tracking-tight: -0.02em;
   --tracking-snug: -0.01em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.04em;
 
+  --weight-light: 300;
   --weight-regular: 400;
   --weight-medium: 500;
-  --weight-semibold: 600;
   --weight-bold: 700;
 
   /* ---------------------------------------------------------------- *
-   * Primitives — space, radius, elevation, motion
+   * Primitives — space, radius, motion
    * ---------------------------------------------------------------- */
 
-  --space-3xs: clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4583rem + 0.1852vw, 0.625rem);
-  --space-xs: clamp(0.75rem, 0.7083rem + 0.1852vw, 0.875rem);
-  --space-sm: clamp(1rem, 0.9167rem + 0.3704vw, 1.25rem);
-  --space-md: clamp(1.5rem, 1.3333rem + 0.7407vw, 2rem);
-  --space-lg: clamp(2rem, 1.75rem + 1.1111vw, 2.75rem);
-  --space-xl: clamp(3rem, 2.6667rem + 1.4815vw, 4rem);
-  --space-2xl: clamp(4rem, 3.5rem + 2.2222vw, 5.5rem);
-  --space-3xl: clamp(5rem, 4.3333rem + 2.963vw, 7rem);
-  --space-4xl: clamp(6rem, 5rem + 4.4444vw, 9rem);
+  /* Space — max values are the Figma spacing steps */
+  --space-3xs: 0.25rem;
+  --space-2xs: clamp(0.375rem, 0.3333rem + 0.1852vw, 0.5rem);
+  --space-xs: clamp(0.625rem, 0.5rem + 0.5556vw, 1rem);
+  --space-sm: clamp(0.875rem, 0.6667rem + 0.9259vw, 1.5rem);
+  --space-md: clamp(1.25rem, 0.9167rem + 1.4815vw, 2.25rem);
+  --space-lg: clamp(1.75rem, 1.3333rem + 1.8519vw, 3rem);
+  --space-xl: clamp(2.5rem, 1.6667rem + 3.7037vw, 5rem);
+  --space-2xl: clamp(3.5rem, 2.375rem + 5vw, 6.875rem);
+  --space-3xl: clamp(4.5rem, 2.875rem + 7.2222vw, 9.375rem);
 
-  --radius-sm: 0.375rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 1.25rem;
-  --radius-xl: 1.75rem;
+  --radius-control: 0.9127rem; /* 14.604px in the design */
+  --radius-input: 1rem;
+  --radius-media: 0.5rem;
+  --radius-card: clamp(1.25rem, 0.9167rem + 1.4815vw, 2.25rem);
   --radius-pill: 62.4375rem;
-
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.05);
-  --shadow-md: 0 2px 20px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.14);
 
   --duration-fast: 120ms;
   --duration-base: 200ms;
-  --duration-slow: 360ms;
   --ease-out: cubic-bezier(0.2, 0, 0, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
   /* ---------------------------------------------------------------- *
    * Primitives — layout
@@ -129,44 +127,45 @@
    *   sm 480px | md 768px | lg 1024px | xl 1280px | 2xl 1536px
    * ---------------------------------------------------------------- */
 
-  --gutter: clamp(1.25rem, 0.6667rem + 2.5926vw, 3rem);
-  --measure: 68ch; /* readable line length ceiling for body copy */
+  --gutter: clamp(1.25rem, -0.1667rem + 6.2963vw, 5.5rem);
 
+  /* 1336px — the Figma content width (1512 frame minus 2 x 88 padding). */
+  --width-content: 83.5rem;
   --width-narrow: 44rem;
-  --width-content: 72rem;
-  --width-wide: 87.5rem;
+  --width-wide: 94.5rem;
 
-  --z-base: 0;
-  --z-sticky: 100;
+  /* The menu is a native <dialog> in the top layer, so only the header and
+     the skip link need a stacking order — and the skip link must clear the
+     header, or it is invisible exactly when a keyboard user reaches it. */
   --z-header: 200;
-  --z-overlay: 300;
-  --z-modal: 400;
+  --z-skip-link: 300;
 
   /* ---------------------------------------------------------------- *
    * Semantics — the only tokens components should reference
    * ---------------------------------------------------------------- */
 
-  --color-bg: var(--neutral-0);
-  --color-bg-subtle: var(--neutral-50);
-  --color-bg-muted: var(--neutral-100);
-  --color-bg-inverse: var(--neutral-950);
+  --color-bg: var(--paper);
+  --color-bg-hero: var(--paper-hero);
+  --color-surface: var(--paper-surface);
+  --color-surface-panel: var(--paper-panel);
 
-  --color-text: var(--neutral-900);
-  --color-text-muted: var(--neutral-600);
-  --color-text-subtle: var(--neutral-500);
-  --color-text-inverse: var(--neutral-0);
-  --color-text-on-accent: var(--neutral-0);
+  --color-text: var(--ink-100);
+  --color-text-secondary: var(--ink-70);
+  --color-text-muted: var(--ink-50);
+  --color-text-faint: var(--ink-40);
+  --color-text-placeholder: var(--ink-30);
+  --color-text-label: var(--grey-label);
+  --color-text-inverse: var(--paper);
 
-  --color-accent: var(--purple-600);
-  --color-accent-hover: var(--purple-700);
-  --color-accent-active: var(--purple-800);
-  --color-accent-soft: var(--purple-400);
-  --color-accent-subtle: var(--purple-50);
+  --color-accent: var(--accent-purple);
 
-  --color-border: var(--neutral-200);
-  --color-border-strong: var(--neutral-300);
+  --color-control-bg: var(--paper-control);
+  --color-control-border: var(--line-control);
+  --color-control-text: var(--grey-control-text);
+  --color-control-dark-bg: var(--fill-dark);
+  --color-control-dark-border: var(--line-dark);
 
-  --color-focus-ring: var(--purple-600);
+  --color-focus-ring: var(--accent-purple);
 
-  --header-height: 4.5rem;
+  --header-height: 5.25rem;
 }

@@ -19,10 +19,9 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'about', element: <PlaceholderPage title="About" /> },
-      { path: 'careers', element: <PlaceholderPage title="Careers" /> },
       { path: 'students', element: <PlaceholderPage title="For Students" /> },
       { path: 'companies', element: <PlaceholderPage title="For Companies" /> },
-      { path: 'join', element: <PlaceholderPage title="Join Us" /> },
+      { path: 'apply', element: <PlaceholderPage title="Apply" /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

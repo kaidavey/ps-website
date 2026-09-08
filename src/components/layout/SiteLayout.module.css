@@ -8,18 +8,21 @@
 
 .main {
   flex: 1 0 auto;
+  /* Clears the transparent sticky header. The hero cancels this with a
+     negative margin so it can run underneath. */
+  padding-block-start: var(--header-height);
 }
 
 .skipLink {
   position: absolute;
   top: var(--space-2xs);
   left: var(--space-2xs);
-  z-index: var(--z-modal);
+  z-index: var(--z-skip-link);
   padding: var(--space-2xs) var(--space-sm);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-media);
   background-color: var(--color-accent);
-  color: var(--color-text-on-accent);
-  font-weight: var(--weight-semibold);
+  color: var(--color-text-inverse);
+  font-weight: var(--weight-medium);
   transform: translateY(-200%);
 }
 

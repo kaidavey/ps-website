@@ -1,0 +1,116 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-bg-hero);
+  /* Pulls the section up under the transparent sticky header. */
+  margin-block-start: calc(var(--header-height) * -1);
+  padding-block: calc(var(--header-height) + var(--space-2xl)) var(--space-2xl);
+  overflow: clip;
+}
+
+/*
+ * The soft colour wash behind the hero. The design ships this as a 2296px
+ * PNG; four radial gradients reproduce it at a fraction of the weight and
+ * stay sharp at any viewport size or pixel density.
+ */
+.wash {
+  position: absolute;
+  inset: -20% -10% auto;
+  z-index: -1;
+  height: 140%;
+  background-image:
+    radial-gradient(38% 42% at 78% 18%, rgb(180 150 255 / 0.28), transparent 70%),
+    radial-gradient(34% 40% at 96% 52%, rgb(255 170 190 / 0.26), transparent 70%),
+    radial-gradient(42% 36% at 55% 4%, rgb(255 214 170 / 0.22), transparent 70%),
+    radial-gradient(50% 44% at 12% 8%, rgb(170 210 255 / 0.2), transparent 72%);
+  pointer-events: none;
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-xl) var(--space-lg);
+  grid-template-areas:
+    'headline'
+    'photo'
+    'prompt';
+}
+
+.headline {
+  grid-area: headline;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+/*
+ * The wordmark. 130px at the design width, scaling down to 44px on a small
+ * phone. `text-wrap: nowrap` is deliberate — the mark reads as one unit, and
+ * the fluid size guarantees it fits without wrapping at every width.
+ */
+.wordmark {
+  font-size: var(--font-size-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-wrap: nowrap;
+  /* Black fading to 40% black down the glyphs, per the design. */
+  background-image: linear-gradient(to bottom, #000 44.65%, rgb(0 0 0 / 0.4) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-subtitle);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-label);
+  text-wrap: balance;
+}
+
+.prompt {
+  grid-area: prompt;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  align-self: end;
+}
+
+.promptText {
+  max-width: 15ch;
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text-muted);
+}
+
+.photo {
+  grid-area: photo;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-media);
+  object-fit: cover;
+}
+
+/*
+ * At the lg breakpoint the hero becomes the design's arrangement: headline
+ * across the top, prompt bottom-left, photo filling the bottom-right. Below
+ * that it is a single column, which is why the areas above stack.
+ */
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-areas:
+      'headline headline'
+      'prompt photo';
+    grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr);
+    align-items: end;
+  }
+
+  .photo {
+    /* Matches the design's 986x563 crop without letterboxing at any width. */
+    aspect-ratio: 986 / 563;
+    margin-block-end: calc(var(--space-2xl) * -1);
+  }
+}

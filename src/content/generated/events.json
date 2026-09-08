@@ -1,0 +1,29 @@
+[
+  {
+    "id": "event-info-session",
+    "slug": "fall-info-session",
+    "title": "Fall Info Session",
+    "date": "2026-09-14",
+    "time": "6:00 PM",
+    "location": "Kaplan Hall 169",
+    "url": null
+  },
+  {
+    "id": "event-coffee-chats",
+    "slug": "coffee-chats",
+    "title": "Coffee Chats",
+    "date": "2026-09-17",
+    "time": "11:00 AM",
+    "location": "Kerckhoff Coffee House",
+    "url": null
+  },
+  {
+    "id": "event-workshop",
+    "slug": "product-teardown-workshop",
+    "title": "Product Teardown Workshop",
+    "date": "2026-09-18",
+    "time": "7:00 PM",
+    "location": "Public Affairs 1234",
+    "url": null
+  }
+]

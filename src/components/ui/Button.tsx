@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { cx } from '@/lib/cx'
 import styles from './Button.module.css'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost'
+export type ButtonVariant = 'dark' | 'light'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 type SharedProps = {
@@ -53,7 +53,7 @@ const sizeClass = {
  * `to` / `href` is supplied.
  */
 export function Button({
-  variant = 'primary',
+  variant = 'dark',
   size = 'md',
   block = false,
   className,

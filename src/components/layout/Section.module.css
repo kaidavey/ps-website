@@ -18,14 +18,6 @@
 .toneDefault {
   background-color: var(--color-bg);
 }
-.toneSubtle {
-  background-color: var(--color-bg-subtle);
-}
-.toneAccent {
-  background-color: var(--color-accent);
-  color: var(--color-text-on-accent);
-}
-.toneInverse {
-  background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+.toneSurface {
+  background-color: var(--color-surface);
 }

@@ -1,0 +1,61 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-md);
+  /*
+   * Content-driven columns, not breakpoint-driven: three across when there is
+   * room, two, then one, with the switch happening whenever a card would fall
+   * under 17rem. The inner min() is what stops it overflowing below that.
+   */
+  grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 0 var(--space-md) var(--space-md);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  overflow: clip;
+}
+
+.media {
+  /* Cancels the card's inline padding so the image runs to its edges, as in
+     the design, without a second element to position it. */
+  margin-inline: calc(var(--space-md) * -1);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 446 / 300;
+  object-fit: cover;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.title {
+  font-size: var(--font-size-body);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text);
+}
+
+.description {
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text);
+}

@@ -1,0 +1,73 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  /* The design runs this copy to 1063px. Capping in rem rather than with a
+     fixed width keeps it from stretching on an ultrawide monitor while still
+     shrinking with the viewport. */
+  max-width: min(100%, 66rem);
+  font-size: var(--font-size-title);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text);
+}
+
+/*
+ * The reset balances headings, which is right for short titles and wrong
+ * here: this heading is display copy meant to run the full measure, and
+ * balancing pulls it into a narrow column. `pretty` still avoids orphans.
+ */
+.copy > * {
+  text-wrap: pretty;
+}
+
+/*
+ * Photo carousel.
+ *
+ * The design lays five 508px photos in a row that overflows the 1336px
+ * content width, so it is a scroller by intent. Implemented with native
+ * overflow + scroll-snap: it works with touch, trackpad, mouse wheel and
+ * keyboard, needs no JavaScript, and degrades to a plain row if snap is
+ * unsupported.
+ */
+.carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  /* Breaks out of the container gutter so photos bleed to both page edges,
+     while the first one still lines up with the text above it. */
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  padding-block-end: var(--space-2xs);
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.track {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.slide {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  /* Never wider than the viewport, and never so narrow it stops being a
+     photograph — one clamp instead of a set of breakpoints. */
+  width: clamp(15rem, 70vw, 31.75rem);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 508 / 337;
+  border-radius: var(--radius-media);
+  object-fit: cover;
+  background-color: var(--color-surface);
+}

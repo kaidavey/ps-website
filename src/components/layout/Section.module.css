@@ -1,0 +1,31 @@
+.section {
+  position: relative;
+}
+
+.spaceSm {
+  padding-block: var(--space-lg);
+}
+.spaceMd {
+  padding-block: var(--space-2xl);
+}
+.spaceLg {
+  padding-block: var(--space-3xl);
+}
+.spaceNone {
+  padding-block: 0;
+}
+
+.toneDefault {
+  background-color: var(--color-bg);
+}
+.toneSubtle {
+  background-color: var(--color-bg-subtle);
+}
+.toneAccent {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+}
+.toneInverse {
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}

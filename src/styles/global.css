@@ -1,0 +1,48 @@
+/**
+ * Global base styles. Element-level defaults only.
+ *
+ * Anything component-specific belongs in that component's *.module.css.
+ * Resist adding utility classes here — this file should stay short.
+ */
+
+@import './tokens.css';
+@import './reset.css';
+
+:root {
+  color-scheme: light;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-synthesis: none;
+}
+
+body {
+  /* Guarantees no page can scroll sideways, whatever a child does wrong. */
+  overflow-x: clip;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background-color: var(--color-accent-subtle);
+  color: var(--color-accent-active);
+}
+
+/* Visually hidden, still read by screen readers. Used for skip links,
+   icon-button labels, and headings that exist for document structure. */
+.visually-hidden:not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

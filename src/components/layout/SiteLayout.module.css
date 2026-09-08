@@ -1,0 +1,28 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  /* svh, not vh: on mobile browsers vh includes the collapsing URL bar and
+     causes the footer to sit below the fold on first paint. */
+  min-height: 100svh;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+.skipLink {
+  position: absolute;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  z-index: var(--z-modal);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+  font-weight: var(--weight-semibold);
+  transform: translateY(-200%);
+}
+
+.skipLink:focus-visible {
+  transform: none;
+}

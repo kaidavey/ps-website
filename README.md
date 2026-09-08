@@ -1,16 +1,67 @@
-# React + Vite
+# Product Space at UCLA — website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + TypeScript + Vite. No UI framework, no CSS framework, no state library.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Command                 | What it does                                           |
+| ----------------------- | ------------------------------------------------------ |
+| `npm run dev`           | Dev server with HMR                                    |
+| `npm run build`         | Typecheck, then production build to `dist/`            |
+| `npm run preview`       | Serve the production build locally                     |
+| `npm run typecheck`     | `tsc --build`, no emit                                 |
+| `npm run lint`          | oxlint                                                 |
+| `npm run format`        | Prettier, write                                        |
+| `npm run content:fetch` | Pull content from Notion into `src/content/generated/` |
 
-## Expanding the Oxlint configuration
+## Content (Notion)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Content is fetched from Notion **at build time** and committed as JSON. The
+site itself is fully static and makes no runtime API calls.
+
+This is not a preference — the Notion API requires a secret integration token
+and sends no CORS headers, so a browser cannot call it. Any client-side
+integration would both fail and leak the token.
+
+**One-time setup**
+
+1. Create an internal integration at <https://www.notion.so/profile/integrations>
+   and copy its secret.
+2. `cp .env.example .env` and paste the token into `NOTION_TOKEN`.
+3. For each database: open it in Notion, use ••• → **Connections** to share it
+   with the integration, then copy the 32-character ID from its URL into the
+   matching `NOTION_*_DATABASE_ID` variable.
+
+**Publishing a content change**
+
+```bash
+npm run content:fetch   # writes src/content/generated/*.json
+git add -A && git commit -m "content: refresh from Notion"
+```
+
+Committing the JSON means the site builds even when Notion is down, `npm run
+dev` works offline, and every content change arrives as a reviewable diff.
+Automate the refresh later with a scheduled CI job or a Notion webhook.
+
+Adding a collection is three edits — see `docs/ARCHITECTURE.md`.
+
+## Deploying
+
+The build output in `dist/` is a static site.
+
+**Important:** the app uses history-based routing, so the host must serve
+`index.html` for unknown paths or deep links like `/about` will 404 on refresh.
+
+- Netlify / Cloudflare Pages — add `public/_redirects` containing `/* /index.html 200`
+- Vercel — add a `vercel.json` rewrite of `/(.*)` to `/index.html`
+- GitHub Pages — no rewrite support; use a hash router or another host
+
+If the Notion fetch should run in CI, set `NOTION_TOKEN` and the database IDs
+as build-environment secrets and run `npm run content:fetch` before `npm run build`.

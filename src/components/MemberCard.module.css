@@ -1,14 +1,14 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-2);
 }
 
 .photo,
 .photoPlaceholder {
   width: 100%;
-  aspect-ratio: 300 / 290;
-  border-radius: 30px;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
 }
 
 .photo {
@@ -20,33 +20,23 @@
 }
 
 .body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding-left: var(--space-1);
+  display: grid;
+  gap: var(--space-1);
 }
 
-.name {
-  color: var(--color-ink);
-}
-
-.role {
+.row {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--color-ink);
+  gap: var(--space-1);
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
+  color: var(--color-ink-muted);
 }
 
-.bio {
-  color: var(--color-grey-text);
-}
-
-.linkedin {
-  color: var(--color-accent);
+.text {
+  color: var(--color-ink-muted);
 }

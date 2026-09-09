@@ -10,6 +10,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "typecheck": "tsc --noEmit",
+    "test": "node --env-file=.env.local scripts/verify-notion.ts",
     "preview": "vite preview"
   },
   "dependencies": {

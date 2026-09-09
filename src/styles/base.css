@@ -25,6 +25,14 @@ html {
 }
 
 body {
+  /*
+   * `pretty` is the safe default for running text: it stops a single word being stranded on the
+   * last line. It is set here, on an inherited property, rather than on `p` and friends, because
+   * an element selector would beat a `type-*` class sitting on a wrapper and block it from
+   * raising its text to `balance`. Short display text opts up in typography.css.
+   */
+  text-wrap: pretty;
+
   font-family: var(--font-sans);
   font-weight: var(--font-weight-regular);
   color: var(--color-ink);
@@ -62,6 +70,7 @@ h2,
 h3,
 h4,
 p,
+li,
 blockquote {
   overflow-wrap: break-word;
 }

@@ -17,17 +17,18 @@
 }
 
 .summary {
-  max-width: 530px;
+  max-width: 420px;
   color: var(--color-ink-2);
 }
 
 .stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-4) var(--space-5);
 }
 
 .stat {
+  flex: 1 1 110px;
   display: grid;
   gap: var(--space-1);
   justify-items: center;
@@ -43,6 +44,7 @@
 
 .label {
   color: var(--color-accent-deep);
+  text-wrap: balance;
 }
 
 .clients {
@@ -65,7 +67,7 @@
 }
 
 .logos img {
-  height: clamp(36px, 4vw, 66px);
+  height: clamp(24px, 2.6vw, 42px);
   width: auto;
   filter: saturate(0);
   opacity: 0.6;

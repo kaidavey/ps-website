@@ -1,0 +1,46 @@
+/*
+ * ============================================================================
+ *  LAYOUT SCALE — the sizes you tune by eye.
+ * ============================================================================
+ *
+ * Companion to type-scale.css. That file decides how big text is; this one
+ * decides how wide text blocks run and how large images are drawn. Change a
+ * value here and it applies wherever that element appears.
+ *
+ * A note on units, because the two behave differently:
+ *
+ *   em   is relative to the text's own size, so a column set in `em` holds the
+ *        same number of characters per line no matter how big the type gets.
+ *        Raising the lead size in type-scale.css widens these columns to match.
+ *        Roughly, 1em ≈ 2 characters, so 16em ≈ 32 characters a line.
+ *
+ *   clamp(min, preferred, max)  picks the middle value but never goes below the
+ *        first or above the last. `svh` means 1% of the screen's height, so
+ *        `14svh` lets an image shrink on short screens instead of overflowing.
+ */
+
+:root {
+  /* ---- Bio columns ----------------------------------------------------
+   * The two paragraphs in the pinned section below the hero. Setting the two to
+   * different widths is what gives the passage its shape. They share a
+   * viewport-tall panel with the photo strip, so narrowing them adds lines and
+   * can crowd the panel on short screens — check both if you change either.
+   *
+   * Neither can exceed the page's content width, so a value past roughly 22em
+   * at the current type size is capped by the column rather than honoured.
+   */
+  --bio-column-1: 24em; /* opening paragraph */
+  --bio-column-2: 25em; /* closing paragraph */
+
+  /* ---- Photo strip ----------------------------------------------------
+   * Height of each photo in the self-scrolling strip under the bio. Width
+   * follows automatically at a 3:2 crop.
+   */
+  --gallery-image-height: clamp(90px, 24svh, 400px);
+
+  /* ---- Hero photo -----------------------------------------------------
+   * The group photo in the hero, as a share of the page width. The second
+   * number is the ceiling in pixels, so it stops growing on large monitors.
+   */
+  --hero-photo-width: min(52%, 750px);
+}

@@ -5,9 +5,9 @@
 
 .card {
   display: grid;
-  grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
-  gap: var(--space-5) clamp(var(--space-4), 6vw, var(--space-7));
-  padding: clamp(32px, 4.5vw, 70px) clamp(24px, 5vw, 80px);
+  grid-template-columns: minmax(0, 275px) minmax(0, 1fr);
+  gap: var(--space-4) clamp(var(--space-4), 5vw, var(--space-6));
+  padding: clamp(24px, 3vw, 44px) clamp(20px, 3.5vw, 52px);
   border-radius: var(--radius-xl);
   background: var(--color-surface);
 }
@@ -26,7 +26,7 @@
 }
 
 .logo {
-  height: 56px;
+  height: 34px;
   width: auto;
   filter: saturate(0);
 }
@@ -48,10 +48,10 @@
 
 .avatar {
   flex-shrink: 0;
-  width: clamp(72px, 8vw, 101px);
+  width: clamp(52px, 5vw, 72px);
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .role {
@@ -59,6 +59,7 @@
 }
 
 .quote {
+  max-width: 90ch;
   display: grid;
   gap: 1lh;
   align-content: start;

@@ -1,0 +1,28 @@
+.text {
+  /* How many words are mid-transition at once. Higher reads as a softer sweep. */
+  --reveal-window: 5;
+  /* Contrast of a word that has not been reached yet. */
+  --reveal-from: 0.2;
+
+  display: grid;
+  gap: var(--space-4);
+}
+
+/*
+ * `--progress` (0 → 1) comes from the scroll track above. Scaled by the word count it becomes a
+ * moving read-head; each word fades up over the span of `--reveal-window` words around it.
+ * The fallback of 1 keeps the text legible before the script runs.
+ */
+.word {
+  opacity: calc(
+    var(--reveal-from) + (1 - var(--reveal-from)) *
+      clamp(
+        0,
+        calc(
+          (var(--progress, 1) * (var(--word-count) + var(--reveal-window)) - var(--word-index)) /
+            var(--reveal-window)
+        ),
+        1
+      )
+  );
+}

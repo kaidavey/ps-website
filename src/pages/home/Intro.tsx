@@ -1,25 +1,26 @@
 import { Container } from '@/components/Container'
+import { RevealText } from '@/components/RevealText'
 import { home } from '@/content/home'
+import { cx } from '@/lib/cx'
+import { useScrollProgress } from '@/lib/useScrollProgress'
 import styles from './Intro.module.css'
+import { PhotoMarquee } from './PhotoMarquee'
 
+/**
+ * Full-viewport panel that stays pinned while the bio darkens word by word. The section itself is
+ * the scroll track: it is a viewport tall plus the distance the reveal takes.
+ */
 export function Intro() {
-  return (
-    <section className={styles.intro} aria-label="About Product Space">
-      <Container className={styles.text}>
-        {home.intro.map((paragraph) => (
-          <p key={paragraph} className="type-lead">
-            {paragraph}
-          </p>
-        ))}
-      </Container>
+  const trackRef = useScrollProgress<HTMLElement>()
 
-      <ul className={styles.gallery} aria-label="Photos from Product Space">
-        {home.gallery.map((photo) => (
-          <li key={photo.src} className={styles.slide}>
-            <img src={photo.src} alt={photo.alt} width={1200} height={800} loading="lazy" />
-          </li>
-        ))}
-      </ul>
+  return (
+    <section ref={trackRef} className={styles.intro} aria-label="About Product Space">
+      <div className={styles.panel}>
+        <Container>
+          <RevealText paragraphs={home.intro} className={cx('type-lead', styles.text)} />
+        </Container>
+        <PhotoMarquee photos={home.gallery} />
+      </div>
     </section>
   )
 }

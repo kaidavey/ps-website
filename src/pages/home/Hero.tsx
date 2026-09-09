@@ -23,9 +23,9 @@ export function Hero() {
             {hero.cta.label}
           </Button>
         </div>
-
-        <img className={styles.photo} src={heroImage} alt={hero.imageAlt} width={1100} height={668} fetchPriority="high" />
       </Container>
+
+      <img className={styles.photo} src={heroImage} alt={hero.imageAlt} width={1300} height={790} fetchPriority="high" />
     </section>
   )
 }

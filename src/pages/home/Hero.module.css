@@ -1,21 +1,30 @@
+/* The hero is the one section that spans the full width of the page. */
 .hero {
+  --container-outer: 100%;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
   overflow: hidden;
   background: var(--color-bg-hero);
 }
 
 .inner {
   position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: min(100svh, 1000px);
-  padding-top: calc(var(--header-height) + 30px);
-  padding-bottom: var(--header-pad);
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-top: calc(var(--header-height) + var(--space-3));
+  padding-bottom: var(--space-6);
 }
 
 .copy {
   display: grid;
   gap: var(--space-1);
-  max-width: 800px;
 }
 
 .title {
@@ -31,46 +40,36 @@
 }
 
 .prompt {
-  position: relative;
-  z-index: 1;
-  grid-row: 3;
   display: grid;
   gap: var(--space-2);
   justify-items: start;
-  align-self: end;
-  max-width: 36%;
+  max-width: 22em;
 }
 
 .promptText {
-  max-width: 12em;
+  max-width: 13em;
   color: var(--color-ink-subtle);
 }
 
+/* Sits against the right edge of the page rather than the centred content column. */
 .photo {
   position: absolute;
-  right: 0;
-  bottom: -5%;
-  width: min(62%, 1000px);
+  right: var(--page-gutter);
+  bottom: 0;
+  width: var(--hero-photo-width); /* styles/layout-scale.css */
   pointer-events: none;
 }
 
 @media (max-width: 800px) {
   .inner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-    min-height: 0;
-    padding-bottom: 0;
-  }
-
-  .prompt {
-    align-self: start;
-    max-width: none;
+    flex: 0 0 auto;
+    padding-bottom: var(--space-4);
   }
 
   .photo {
     position: static;
     width: 100%;
     margin-top: auto;
+    padding-inline: var(--page-gutter);
   }
 }

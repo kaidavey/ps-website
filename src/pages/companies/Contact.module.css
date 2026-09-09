@@ -2,7 +2,7 @@
   display: grid;
   gap: var(--space-4);
   justify-items: start;
-  max-width: 865px;
+  max-width: 660px;
 }
 
 .fields {

@@ -1,6 +1,7 @@
 /*
  * Type roles. Every piece of text on the site uses exactly one of these classes,
- * so a role is restyled site-wide by editing its tokens in tokens.css.
+ * so a role is restyled site-wide by editing its values in type-scale.css.
+ * This file only wires the values up; it holds no sizes of its own.
  */
 .type-display,
 .type-title,
@@ -12,6 +13,20 @@
 .type-label,
 .type-stat {
   font-family: var(--font-sans);
+}
+
+/*
+ * Roles that read as display text are short enough to balance: every line comes out a similar
+ * length, so no stray word hangs on its own. Body, body-strong and label are running text and
+ * keep the `pretty` default from base.css instead.
+ */
+.type-display,
+.type-title,
+.type-lead,
+.type-heading,
+.type-subtitle,
+.type-stat {
+  text-wrap: balance;
 }
 
 .type-display {

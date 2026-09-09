@@ -12,8 +12,8 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <Intro />
       <PageContent>
-        <Intro />
         <Pillars />
         <ApplyBanner />
         <Events />

@@ -4,13 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node --env-file=.env.local scripts/fetch-members.ts",
     "dev": "vite",
+    "prebuild": "node --env-file=.env.local scripts/fetch-members.ts",
     "build": "vite build",
     "lint": "oxlint",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@notionhq/client": "^5.26.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.3"

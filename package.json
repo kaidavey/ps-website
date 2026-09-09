@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node --env-file=.env.local scripts/fetch-members.ts",
+    "predev": "node --env-file-if-exists=.env.local scripts/fetch-members.ts",
     "dev": "vite",
-    "prebuild": "node --env-file=.env.local scripts/fetch-members.ts",
+    "prebuild": "node --env-file-if-exists=.env.local scripts/fetch-members.ts",
     "build": "vite build",
     "lint": "oxlint",
     "typecheck": "tsc --noEmit",
-    "test": "node --env-file=.env.local scripts/verify-notion.ts",
+    "test": "node --env-file-if-exists=.env.local scripts/verify-notion.ts",
     "preview": "vite preview"
   },
   "dependencies": {

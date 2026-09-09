@@ -1,0 +1,9 @@
+.header {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.subtitle {
+  max-width: 30em;
+  color: var(--color-ink-muted);
+}

@@ -1,0 +1,80 @@
+.steps {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  height: 31px;
+}
+
+.track::before {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-line) 13%, var(--color-line) 87%, transparent);
+  opacity: 0.8;
+}
+
+/* Each marker sits further along the brand gradient (--t runs 0 → 1). */
+.marker {
+  position: relative;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: linear-gradient(
+    250deg,
+    oklab(45.2% 0.12 -0.117) calc(-104% + var(--t) * 115%),
+    oklab(66.2% 0.16 0.012) calc(-21% + var(--t) * 145%),
+    oklab(88.1% 0.02 0.103) calc(72% + var(--t) * 150%)
+  );
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.step {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  padding: var(--space-3) var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.heading {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+}
+
+.number {
+  opacity: 0.3;
+}
+
+.title {
+  color: var(--color-ink-2);
+}
+
+.description {
+  max-width: 12em;
+}
+
+@media (max-width: 900px) {
+  .track {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  }
+}

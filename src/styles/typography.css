@@ -1,0 +1,78 @@
+/*
+ * Type roles. Every piece of text on the site uses exactly one of these classes,
+ * so a role is restyled site-wide by editing its tokens in tokens.css.
+ */
+.type-display,
+.type-title,
+.type-lead,
+.type-heading,
+.type-subtitle,
+.type-body,
+.type-body-strong,
+.type-label,
+.type-stat {
+  font-family: var(--font-sans);
+}
+
+.type-display {
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-leading);
+  font-weight: var(--type-display-weight);
+  letter-spacing: var(--type-display-tracking);
+}
+
+.type-title {
+  font-size: var(--type-title-size);
+  line-height: var(--type-title-leading);
+  font-weight: var(--type-title-weight);
+  letter-spacing: var(--type-title-tracking);
+}
+
+.type-lead {
+  font-size: var(--type-lead-size);
+  line-height: var(--type-lead-leading);
+  font-weight: var(--type-lead-weight);
+  letter-spacing: var(--type-lead-tracking);
+}
+
+.type-heading {
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-leading);
+  font-weight: var(--type-heading-weight);
+  letter-spacing: var(--type-heading-tracking);
+}
+
+.type-subtitle {
+  font-size: var(--type-subtitle-size);
+  line-height: var(--type-subtitle-leading);
+  font-weight: var(--type-subtitle-weight);
+  letter-spacing: var(--type-subtitle-tracking);
+}
+
+.type-body {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--type-body-weight);
+  letter-spacing: var(--type-body-tracking);
+}
+
+.type-body-strong {
+  font-size: var(--type-body-strong-size);
+  line-height: var(--type-body-strong-leading);
+  font-weight: var(--type-body-strong-weight);
+  letter-spacing: var(--type-body-strong-tracking);
+}
+
+.type-label {
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-leading);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+}
+
+.type-stat {
+  font-size: var(--type-stat-size);
+  line-height: var(--type-stat-leading);
+  font-weight: var(--type-stat-weight);
+  letter-spacing: var(--type-stat-tracking);
+}

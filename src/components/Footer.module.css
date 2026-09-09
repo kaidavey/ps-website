@@ -1,0 +1,90 @@
+.footer {
+  overflow: hidden;
+  padding-top: var(--space-5);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-5) var(--space-6);
+}
+
+.brand {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 378px;
+}
+
+.brandText {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.brandName {
+  letter-spacing: -0.02em;
+}
+
+.updated {
+  color: var(--color-ink-faint);
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5) clamp(var(--space-5), 6vw, 80px);
+}
+
+.column {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.columnTitle {
+  letter-spacing: -0.05em;
+}
+
+.links {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.link {
+  transition: opacity var(--motion-fast);
+}
+
+.link:hover,
+.link:focus-visible {
+  opacity: 0.6;
+}
+
+/* Soft colour wash across the bottom of the page. */
+.glow {
+  position: relative;
+  height: clamp(180px, 20vw, 300px);
+  margin-top: var(--space-5);
+}
+
+.glow::before {
+  content: '';
+  position: absolute;
+  inset: -30% -10%;
+  opacity: 0.55;
+  filter: blur(70px);
+  background:
+    radial-gradient(closest-side, var(--color-glow-pink), transparent) 0% 60% / 50% 90% no-repeat,
+    radial-gradient(closest-side, var(--color-glow-magenta), transparent) 35% 30% / 50% 90% no-repeat,
+    radial-gradient(closest-side, var(--color-glow-lavender), transparent) 65% 70% / 60% 100% no-repeat,
+    radial-gradient(closest-side, var(--color-glow-yellow), transparent) 100% 50% / 55% 80% no-repeat;
+}
+
+.mark {
+  position: absolute;
+  bottom: -8%;
+  left: max(var(--page-gutter), calc((100% - var(--container-max)) / 2 + var(--page-gutter)));
+  height: 95%;
+  width: auto;
+  color: var(--color-ink);
+  mix-blend-mode: overlay;
+}

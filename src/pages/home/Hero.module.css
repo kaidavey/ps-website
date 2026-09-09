@@ -1,0 +1,76 @@
+.hero {
+  overflow: hidden;
+  background: var(--color-bg-hero);
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: min(100svh, 1000px);
+  padding-top: calc(var(--header-height) + 30px);
+  padding-bottom: var(--header-pad);
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-1);
+  max-width: 800px;
+}
+
+.title {
+  width: fit-content;
+  background: var(--gradient-display);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  color: var(--color-grey);
+}
+
+.prompt {
+  position: relative;
+  z-index: 1;
+  grid-row: 3;
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+  align-self: end;
+  max-width: 36%;
+}
+
+.promptText {
+  max-width: 12em;
+  color: var(--color-ink-subtle);
+}
+
+.photo {
+  position: absolute;
+  right: 0;
+  bottom: -5%;
+  width: min(62%, 1000px);
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .prompt {
+    align-self: start;
+    max-width: none;
+  }
+
+  .photo {
+    position: static;
+    width: 100%;
+    margin-top: auto;
+  }
+}

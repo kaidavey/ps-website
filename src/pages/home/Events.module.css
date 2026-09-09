@@ -1,0 +1,12 @@
+.layout {
+  display: grid;
+  grid-template-columns: 37fr 63fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

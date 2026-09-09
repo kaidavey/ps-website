@@ -1,0 +1,70 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-4);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+}
+
+.media {
+  aspect-ratio: 442 / 300;
+  overflow: hidden;
+}
+
+.media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.text {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+}
+
+.art {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(200deg, #5ec2ff 0%, #2f7dff 45%, #2b3eff 100%);
+}
+
+.laptop {
+  position: absolute;
+  top: 50%;
+  left: -38%;
+  width: 81%;
+  translate: 0 calc(-50% + 4%);
+}
+
+.laptop > img:first-child {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* Screen area of the laptop frame, as a fraction of the frame image. */
+.screen {
+  position: absolute;
+  top: 3.4%;
+  left: 10.1%;
+  width: 79.9%;
+  height: 85.6%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.shapes {
+  position: absolute;
+  top: 42%;
+  left: 46%;
+  width: 29%;
+}

@@ -1,0 +1,141 @@
+/*
+ * Design tokens: the single source of truth for every visual constant on the site.
+ * Type roles are consumed by the classes in typography.css; everything else is used directly.
+ * Fluid values scale linearly between a 375px phone and the 1660px design canvas.
+ */
+:root {
+  /* ---- Typography ---------------------------------------------------- */
+  --font-sans: 'Helvetica Neue', 'Inter', system-ui, -apple-system, sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Hero wordmark: 56px → 130px */
+  --type-display-size: clamp(3.5rem, 2.15rem + 5.76vw, 8.125rem);
+  --type-display-leading: 1.2;
+  --type-display-weight: var(--font-weight-bold);
+  --type-display-tracking: -0.06em;
+
+  /* Page titles: 48px → 100px */
+  --type-title-size: clamp(3rem, 2.05rem + 4.05vw, 6.25rem);
+  --type-title-leading: 1.2;
+  --type-title-weight: var(--font-weight-bold);
+  --type-title-tracking: -0.06em;
+
+  /* Large intro statements: 28px → 58px */
+  --type-lead-size: clamp(1.75rem, 1.2rem + 2.33vw, 3.625rem);
+  --type-lead-leading: 1.2;
+  --type-lead-weight: var(--font-weight-light);
+  --type-lead-tracking: -0.01em;
+
+  /* Section headings: 30px → 44px */
+  --type-heading-size: clamp(1.875rem, 1.62rem + 1.09vw, 2.75rem);
+  --type-heading-leading: 1.23;
+  --type-heading-weight: var(--font-weight-medium);
+  --type-heading-tracking: -0.01em;
+
+  /* Section subtitles: 22px → 36px */
+  --type-subtitle-size: clamp(1.375rem, 1.12rem + 1.09vw, 2.25rem);
+  --type-subtitle-leading: 1.39;
+  --type-subtitle-weight: var(--font-weight-regular);
+  --type-subtitle-tracking: -0.02em;
+
+  /* Body copy: 17px → 24px */
+  --type-body-size: clamp(1.0625rem, 0.935rem + 0.545vw, 1.5rem);
+  --type-body-leading: 1.42;
+  --type-body-weight: var(--font-weight-regular);
+  --type-body-tracking: -0.01em;
+
+  /* Card titles, buttons, links: body size, medium weight, tighter leading */
+  --type-body-strong-size: var(--type-body-size);
+  --type-body-strong-leading: 1.25;
+  --type-body-strong-weight: var(--font-weight-medium);
+  --type-body-strong-tracking: -0.01em;
+
+  /* Small UI labels (calendar): 16px → 20px */
+  --type-label-size: clamp(1rem, 0.925rem + 0.311vw, 1.25rem);
+  --type-label-leading: 1.2;
+  --type-label-weight: var(--font-weight-medium);
+  --type-label-tracking: -0.01em;
+
+  /* Big statistics: 44px → 70px */
+  --type-stat-size: clamp(2.75rem, 2.275rem + 2.02vw, 4.375rem);
+  --type-stat-leading: 1.2;
+  --type-stat-weight: var(--font-weight-bold);
+  --type-stat-tracking: -0.015em;
+
+  /* ---- Color --------------------------------------------------------- */
+  --color-bg: #ffffff;
+  --color-bg-hero: #f9f9f9;
+  --color-surface: #f6f6f6;
+  --color-surface-raised: #f8f8f8;
+
+  --color-ink: #000000;
+  --color-ink-2: #282828;
+  --color-ink-muted: rgb(0 0 0 / 70%);
+  --color-ink-subtle: rgb(0 0 0 / 50%);
+  --color-ink-faint: rgb(0 0 0 / 40%);
+  --color-ink-placeholder: rgb(0 0 0 / 30%);
+
+  --color-grey: #acacac;
+  --color-grey-dark: #797979;
+  --color-grey-text: #676767;
+  --color-dot: #636363;
+  --color-line: #c9c9c9;
+
+  --color-button-secondary-bg: #ececec;
+  --color-button-secondary-border: #e7e7e7;
+
+  --color-accent: #8e3abe;
+  --color-accent-deep: #470a60;
+
+  /* Glow palette (footer) */
+  --color-glow-pink: #fb71f7;
+  --color-glow-magenta: #f788ff;
+  --color-glow-lavender: #d59aff;
+  --color-glow-yellow: #ffeb54;
+
+  --gradient-ink: linear-gradient(0deg, oklab(0% 0 0), oklab(51% 0 0));
+  --gradient-display: linear-gradient(180deg, #000 44.5%, rgb(0 0 0 / 40%) 99.5%);
+  --gradient-brand: linear-gradient(
+    240deg,
+    oklab(45.2% 0.12 -0.117) -28%,
+    oklab(66.2% 0.16 0.012) 63%,
+    oklab(88.1% 0.02 0.103) 166%
+  );
+
+  /* ---- Shape --------------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-pill: 999px;
+  --radius-button: 15px;
+
+  /* ---- Spacing ------------------------------------------------------- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 36px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 88px;
+
+  /* Vertical rhythm between page sections: 80px → 150px */
+  --section-gap: clamp(5rem, 3.7rem + 5.45vw, 9.375rem);
+  /* Breathing room above the footer: 120px → 300px */
+  --page-bottom: clamp(7.5rem, 4.2rem + 14vw, 18.75rem);
+
+  /* ---- Layout -------------------------------------------------------- */
+  --container-max: 1400px;
+  /* Side gutter: 20px → 88px */
+  --page-gutter: clamp(1.25rem, 0.26rem + 4.2vw, 5.5rem);
+
+  --header-pad: clamp(1.5rem, 1.06rem + 1.87vw, 3rem);
+  --logo-height: clamp(2.5rem, 2.28rem + 0.93vw, 3.4375rem);
+  --header-height: calc(var(--header-pad) * 2 + var(--logo-height));
+
+  --motion-fast: 150ms ease;
+}

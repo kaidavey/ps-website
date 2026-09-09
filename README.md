@@ -1,16 +1,36 @@
-# React + Vite
+# Product Space at UCLA
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Marketing site for Product Space at UCLA. React 19, TypeScript, Vite, and plain CSS Modules; no UI or styling libraries.
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Command             | What it does                        |
+| ------------------- | ----------------------------------- |
+| `npm run dev`       | Start the dev server                |
+| `npm run build`     | Production build to `dist/`         |
+| `npm run preview`   | Serve the production build locally  |
+| `npm run typecheck` | Type-check without emitting         |
+| `npm run lint`      | Lint with oxlint                    |
 
-## React Compiler
+## How the code is organised
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+  styles/      tokens.css (every design constant), typography.css (type roles), base.css (reset)
+  components/  Shared building blocks: Container, Button, Header, Footer, Calendar, EventList, form fields
+  content/     All copy, links, and image references, typed per page
+  pages/       One folder per route; each section is its own component + CSS module
+  lib/         Small helpers (class names, dates, page title)
+  assets/      Optimised images and the self-hosted Inter fallback font
+```
 
-## Expanding the Oxlint configuration
+## Changing the design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Typography.** Every text element uses one `type-*` class from `styles/typography.css`. The size,
+  weight, leading, and tracking for each role are tokens in `styles/tokens.css`; edit them there and the
+  change applies site-wide. Sizes are fluid `clamp()` values that scale between phone and desktop.
+- **Fonts.** The stack is Helvetica Neue (Apple platforms) with a self-hosted Inter fallback. To use a
+  licensed Helvetica Neue webfont, add an `@font-face` in `base.css` and update `--font-sans`.
+- **Layout.** Content is centred at `--container-max` (1400px) with fluid gutters; margins grow beyond that.
+- **Copy and links.** Edit the files in `src/content/`. Form endpoints and the application link live in
+  `content/site.ts`; events for the calendar live in `content/events.ts`.

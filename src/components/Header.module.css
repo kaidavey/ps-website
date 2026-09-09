@@ -1,0 +1,97 @@
+.header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+}
+
+.bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--header-pad);
+  opacity: 0.6;
+  transition: opacity var(--motion-fast);
+}
+
+.bar:hover,
+.bar:focus-within,
+.open .bar {
+  opacity: 1;
+}
+
+.home {
+  display: block;
+  color: var(--color-ink);
+}
+
+.logo {
+  height: var(--logo-height);
+  width: auto;
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  color: #1c1b1f;
+}
+
+.icon {
+  width: 29px;
+  height: 23px;
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow-y: auto;
+  background: var(--color-bg);
+}
+
+.menuInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: 100%;
+  padding-top: calc(var(--header-height) + var(--space-5));
+  padding-bottom: var(--space-6);
+}
+
+.primary {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.primaryLink {
+  display: inline-block;
+  color: var(--color-ink-faint);
+  transition: color var(--motion-fast);
+}
+
+.primaryLink:hover,
+.primaryLink:focus-visible,
+.active {
+  color: var(--color-ink);
+}
+
+.secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+
+.secondaryLink {
+  color: var(--color-ink-subtle);
+  transition: color var(--motion-fast);
+}
+
+.secondaryLink:hover,
+.secondaryLink:focus-visible {
+  color: var(--color-ink);
+}

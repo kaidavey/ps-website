@@ -17,14 +17,14 @@
 }
 
 .summary {
-  max-width: 420px;
+  max-width: 530px;
   color: var(--color-ink-2);
 }
 
 .stats {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4) var(--space-5);
+  gap: 24px;
 }
 
 .stat {
@@ -52,7 +52,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4) var(--space-5);
+  gap: 24px;
 }
 
 .clientsLabel {
@@ -67,8 +67,14 @@
 }
 
 .logos img {
-  height: clamp(24px, 2.6vw, 42px);
+  height: clamp(30px, 4.3vw, 65px);
   width: auto;
   filter: saturate(0);
   opacity: 0.6;
 }
+
+.row { display: grid; grid-template-columns: minmax(0, 530px) minmax(0, 1fr); gap: 48px; }
+.stats { display: grid; grid-template-columns: 1fr 1.3fr 1fr; align-items: start; }
+.stat { min-width: 0; }
+@media (max-width: 1100px) { .row { grid-template-columns: 1fr; } .stats { max-width: 760px; width: 100%; } }
+@media (max-width: 600px) { .stats { gap: 12px; } .logos { gap: 24px; } .logos img { max-width: 135px; object-fit: contain; } }

@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1.64fr;
-  gap: clamp(var(--space-3), 2.6vw, 36px);
+  gap: clamp(var(--space-3), 2.6vw, 56.8px);
 }
 
 .item {
@@ -12,10 +12,10 @@
 
 .image {
   width: 100%;
-  height: clamp(240px, 25vw, 380px);
+  height: clamp(240px, 37.08vw, 560.54px);
   object-fit: cover;
   object-position: top;
-  border-radius: var(--radius-xl);
+  border-radius: 0;
 }
 
 .caption {
@@ -42,3 +42,6 @@
     aspect-ratio: 4 / 5;
   }
 }
+
+.item:last-child .image { border-radius: 30px; object-position: 57.45% center; }
+.caption { text-transform: capitalize; }

@@ -9,7 +9,7 @@
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
-  height: 22px;
+  height: 31px;
 }
 
 .track::before {
@@ -24,8 +24,8 @@
 /* Each marker sits further along the brand gradient (--t runs 0 → 1). */
 .marker {
   position: relative;
-  width: 22px;
-  height: 22px;
+  width: 31px;
+  height: 31px;
   border-radius: 50%;
   background: linear-gradient(
     250deg,
@@ -79,3 +79,7 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   }
 }
+
+.track { column-gap: 24px; }
+.step { padding: 24px 24px 36px; align-content: start; gap: 23px; }
+.description { max-width: none; text-wrap: pretty; }

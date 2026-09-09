@@ -1,6 +1,10 @@
+/*
+ * Centres content at the site's measure and applies the page gutters. A section runs edge to edge
+ * by setting `--container-outer: 100%` on itself; everything else stays in the measured column.
+ */
 .container {
   width: 100%;
-  max-width: calc(var(--container-max) + 2 * var(--page-gutter));
+  max-width: var(--container-outer);
   margin-inline: auto;
   padding-inline: var(--page-gutter);
 }

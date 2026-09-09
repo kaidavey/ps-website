@@ -1,71 +1,9 @@
 /*
- * Design tokens: the single source of truth for every visual constant on the site.
- * Type roles are consumed by the classes in typography.css; everything else is used directly.
- * Fluid values scale linearly between a 375px phone and the 1660px design canvas.
+ * Design tokens: colour, shape, spacing and layout.
+ * Everything to do with text — font family, weights and the size of every type role —
+ * lives in type-scale.css instead.
  */
 :root {
-  /* ---- Typography ---------------------------------------------------- */
-  --font-sans: 'Helvetica Neue', 'Inter', system-ui, -apple-system, sans-serif;
-
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-
-  /* Hero wordmark: 56px → 130px */
-  --type-display-size: clamp(3.5rem, 2.15rem + 5.76vw, 8.125rem);
-  --type-display-leading: 1.2;
-  --type-display-weight: var(--font-weight-bold);
-  --type-display-tracking: -0.06em;
-
-  /* Page titles: 48px → 100px */
-  --type-title-size: clamp(3rem, 2.05rem + 4.05vw, 6.25rem);
-  --type-title-leading: 1.2;
-  --type-title-weight: var(--font-weight-bold);
-  --type-title-tracking: -0.06em;
-
-  /* Large intro statements: 28px → 58px */
-  --type-lead-size: clamp(1.75rem, 1.2rem + 2.33vw, 3.625rem);
-  --type-lead-leading: 1.2;
-  --type-lead-weight: var(--font-weight-light);
-  --type-lead-tracking: -0.01em;
-
-  /* Section headings: 30px → 44px */
-  --type-heading-size: clamp(1.875rem, 1.62rem + 1.09vw, 2.75rem);
-  --type-heading-leading: 1.23;
-  --type-heading-weight: var(--font-weight-medium);
-  --type-heading-tracking: -0.01em;
-
-  /* Section subtitles: 22px → 36px */
-  --type-subtitle-size: clamp(1.375rem, 1.12rem + 1.09vw, 2.25rem);
-  --type-subtitle-leading: 1.39;
-  --type-subtitle-weight: var(--font-weight-regular);
-  --type-subtitle-tracking: -0.02em;
-
-  /* Body copy: 17px → 24px */
-  --type-body-size: clamp(1.0625rem, 0.935rem + 0.545vw, 1.5rem);
-  --type-body-leading: 1.42;
-  --type-body-weight: var(--font-weight-regular);
-  --type-body-tracking: -0.01em;
-
-  /* Card titles, buttons, links: body size, medium weight, tighter leading */
-  --type-body-strong-size: var(--type-body-size);
-  --type-body-strong-leading: 1.25;
-  --type-body-strong-weight: var(--font-weight-medium);
-  --type-body-strong-tracking: -0.01em;
-
-  /* Small UI labels (calendar): 16px → 20px */
-  --type-label-size: clamp(1rem, 0.925rem + 0.311vw, 1.25rem);
-  --type-label-leading: 1.2;
-  --type-label-weight: var(--font-weight-medium);
-  --type-label-tracking: -0.01em;
-
-  /* Big statistics: 44px → 70px */
-  --type-stat-size: clamp(2.75rem, 2.275rem + 2.02vw, 4.375rem);
-  --type-stat-leading: 1.2;
-  --type-stat-weight: var(--font-weight-bold);
-  --type-stat-tracking: -0.015em;
-
   /* ---- Color --------------------------------------------------------- */
   --color-bg: #ffffff;
   --color-bg-hero: #f9f9f9;
@@ -107,35 +45,48 @@
   );
 
   /* ---- Shape --------------------------------------------------------- */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 36px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-pill: 999px;
-  --radius-button: 15px;
+  --radius-button: 10px;
 
   /* ---- Spacing ------------------------------------------------------- */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 36px;
-  --space-5: 48px;
-  --space-6: 64px;
-  --space-7: 88px;
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 20px;
+  --space-4: 28px;
+  --space-5: 40px;
+  --space-6: 56px;
+  --space-7: 72px;
 
-  /* Vertical rhythm between page sections: 80px → 150px */
-  --section-gap: clamp(5rem, 3.7rem + 5.45vw, 9.375rem);
-  /* Breathing room above the footer: 120px → 300px */
-  --page-bottom: clamp(7.5rem, 4.2rem + 14vw, 18.75rem);
+  /* Vertical rhythm between page sections: 64px → 96px */
+  --section-gap: clamp(4rem, 3.2rem + 3.4vw, 6rem);
+  /* Breathing room above the footer: 96px → 160px */
+  --page-bottom: clamp(6rem, 4.5rem + 6.4vw, 10rem);
 
   /* ---- Layout -------------------------------------------------------- */
-  --container-max: 1400px;
-  /* Side gutter: 20px → 88px */
-  --page-gutter: clamp(1.25rem, 0.26rem + 4.2vw, 5.5rem);
+  /*
+   * Content measure, and the container box carrying it plus its gutters. Sections that should run
+   * edge to edge instead (the hero, the header) set `--container-outer: 100%` on themselves.
+   */
+  --container-max: 1120px;
+  --container-outer: calc(var(--container-max) + 2 * var(--page-gutter));
+  /* Side gutter: 20px → 64px */
+  --page-gutter: clamp(1.25rem, 0.6rem + 2.9vw, 4rem);
 
-  --header-pad: clamp(1.5rem, 1.06rem + 1.87vw, 3rem);
-  --logo-height: clamp(2.5rem, 2.28rem + 0.93vw, 3.4375rem);
+  --header-pad: 22px;
+  --logo-height: 42px;
   --header-height: calc(var(--header-pad) * 2 + var(--logo-height));
 
   --motion-fast: 150ms ease;
+}
+
+/* A more compact header on phones. */
+@media (max-width: 600px) {
+  :root {
+    --header-pad: 16px;
+    --logo-height: 34px;
+  }
 }

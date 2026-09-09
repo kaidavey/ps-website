@@ -1,0 +1,123 @@
+/*
+ * ============================================================================
+ *  TYPE SCALE — the one place to change how text looks across the whole site.
+ * ============================================================================
+ *
+ * Every piece of text on the site uses one of the roles below, via a matching
+ * `type-*` class from typography.css. Change a value here and it applies
+ * everywhere that role is used, on every page.
+ *
+ * Each role has four knobs:
+ *   size      how big the text is
+ *   leading   line height, as a multiple of the size (1.5 = one-and-a-half)
+ *   weight    how bold it is
+ *   tracking  letter spacing; negative pulls letters together
+ *
+ * Sizes are in `rem`, where 1rem = 16px, so 1.5rem = 24px. The px equivalent
+ * is written in the comment beside each one. rem is used rather than px so the
+ * site still respects a reader's browser font-size setting.
+ *
+ * Sizes are FIXED, not fluid: text reads at the same size on a phone and on a
+ * large monitor, and only the layout reflows around it. The exception is the
+ * four largest roles, which would overflow a narrow screen; they step down at
+ * two breakpoints at the bottom of this file.
+ */
+
+:root {
+  /* ---- Font family --------------------------------------------------- */
+  /* Helvetica Neue ships on Apple devices; Inter is the self-hosted fallback. */
+  --font-sans: 'Helvetica Neue', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ---- Available weights --------------------------------------------- */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* ---- DISPLAY — the "product space" wordmark in the hero -------------- */
+  --type-display-size: 6.5rem; /* 104px */
+  --type-display-leading: 1.1;
+  --type-display-weight: var(--font-weight-bold);
+  --type-display-tracking: -0.05em;
+
+  /* ---- TITLE — page titles, e.g. "For Companies" ---------------------- */
+  --type-title-size: 3rem; /* 48px */
+  --type-title-leading: 1.12;
+  --type-title-weight: var(--font-weight-bold);
+  --type-title-tracking: -0.045em;
+
+  /* ---- LEAD — the large bio statements under the hero ----------------- */
+  /*
+   * The only role capped by viewport HEIGHT rather than a plain length. The bio shares a pinned,
+   * viewport-tall panel with the photo strip, so it holds 52px on a normal screen and eases down
+   * on short ones instead of overflowing. Raise the first number to make it bigger.
+   */
+  --type-lead-size: min(3.25rem, 5.6svh); /* up to 52px */
+  --type-lead-leading: 1.32;
+  --type-lead-weight: var(--font-weight-light);
+  --type-lead-tracking: -0.015em;
+
+  /* ---- HEADING — section headings, e.g. "How It Works" ---------------- */
+  --type-heading-size: 1.625rem; /* 26px */
+  --type-heading-leading: 1.25;
+  --type-heading-weight: var(--font-weight-medium);
+  --type-heading-tracking: -0.02em;
+
+  /* ---- SUBTITLE — the muted line under a section heading -------------- */
+  --type-subtitle-size: 1.25rem; /* 20px */
+  --type-subtitle-leading: 1.4;
+  --type-subtitle-weight: var(--font-weight-regular);
+  --type-subtitle-tracking: -0.02em;
+
+  /* ---- BODY — paragraphs, list text, form fields ---------------------- */
+  --type-body-size: 0.9375rem; /* 15px */
+  --type-body-leading: 1.55;
+  --type-body-weight: var(--font-weight-regular);
+  --type-body-tracking: -0.005em;
+
+  /* ---- BODY STRONG — card titles, buttons, links ---------------------- */
+  /* Follows the body size by default; give it its own length to break that link. */
+  --type-body-strong-size: var(--type-body-size); /* 15px */
+  --type-body-strong-leading: 1.35;
+  --type-body-strong-weight: var(--font-weight-medium);
+  --type-body-strong-tracking: -0.01em;
+
+  /* ---- LABEL — small UI text: calendar days, captions ----------------- */
+  --type-label-size: 0.8125rem; /* 13px */
+  --type-label-leading: 1.3;
+  --type-label-weight: var(--font-weight-medium);
+  --type-label-tracking: 0;
+
+  /* ---- STAT — the big numbers on For Companies ------------------------ */
+  --type-stat-size: 2.75rem; /* 44px */
+  --type-stat-leading: 1.15;
+  --type-stat-weight: var(--font-weight-bold);
+  --type-stat-tracking: -0.02em;
+}
+
+/*
+ * ---- Step-downs for narrow screens ----------------------------------------
+ * Only the four largest roles appear here. Body, heading, subtitle and label
+ * deliberately keep one size at every width. Add a role to these blocks if you
+ * want it to shrink on smaller screens too.
+ */
+
+/* Tablets and small laptops */
+@media (max-width: 900px) {
+  :root {
+    --type-display-size: 4.5rem; /* 72px */
+    --type-title-size: 2.5rem; /* 40px */
+    --type-lead-size: 2.25rem; /* 36px */
+    --type-stat-size: 2.375rem; /* 38px */
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  :root {
+    --type-display-size: 2.875rem; /* 46px */
+    --type-title-size: 2rem; /* 32px */
+    --type-lead-size: 1.75rem; /* 28px */
+    --type-stat-size: 2rem; /* 32px */
+  }
+}

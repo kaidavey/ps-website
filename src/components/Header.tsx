@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { site } from '@/content/site'
 import { cx } from '@/lib/cx'
+import { useHeaderVisibility } from '@/lib/useHeaderVisibility'
 import { Container } from './Container'
 import { Logo } from './Logo'
 import styles from './Header.module.css'
@@ -9,6 +10,7 @@ import styles from './Header.module.css'
 /** Floating site header: logo plus a menu toggle that opens the full-screen navigation. */
 export function Header() {
   const [open, setOpen] = useState(false)
+  const { hidden, atTop } = useHeaderVisibility()
   const menuId = useId()
   const close = () => setOpen(false)
 
@@ -26,7 +28,7 @@ export function Header() {
   }, [open])
 
   return (
-    <header className={cx(styles.header, open && styles.open)}>
+    <header className={cx(styles.header, open && styles.open, !open && hidden && styles.hidden, !atTop && styles.pinned)}>
       <Container className={styles.bar}>
         <Link to="/" className={styles.home} aria-label={`${site.name} home`} onClick={close}>
           <Logo className={styles.logo} />

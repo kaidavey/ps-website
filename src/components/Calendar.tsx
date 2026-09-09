@@ -11,15 +11,16 @@ interface CalendarProps {
   selected: Date | null
   onSelect: (day: Date) => void
   initialMonth?: Date
+  className?: string
 }
 
 /** Month calendar with event markers and a selectable day. */
-export function Calendar({ eventDays, selected, onSelect, initialMonth = new Date() }: CalendarProps) {
+export function Calendar({ eventDays, selected, onSelect, initialMonth = new Date(), className }: CalendarProps) {
   const [month, setMonth] = useState(() => addMonths(initialMonth, 0))
   const today = new Date()
 
   return (
-    <div className={styles.calendar}>
+    <div className={cx(styles.calendar, className)}>
       <div className={styles.header}>
         <button type="button" className={styles.nav} onClick={() => setMonth(addMonths(month, -1))} aria-label="Previous month">
           <Chevron />

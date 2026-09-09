@@ -1,7 +1,27 @@
+/*
+ * Fixed so it can slide out of the way while reading and return on the first upward scroll.
+ * At the top of the page it is transparent over the hero; once scrolled it takes a surface.
+ */
 .header {
-  position: absolute;
+  /* Spans the full width, lining up with the hero it sits over. */
+  --container-outer: 100%;
+
+  position: fixed;
   inset: 0 0 auto;
   z-index: 20;
+  transition:
+    translate 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 200ms ease;
+}
+
+.hidden {
+  translate: 0 -100%;
+}
+
+/* Solid white once it leaves the hero, and while the menu is open. No divider. */
+.pinned,
+.open {
+  background: var(--color-bg);
 }
 
 .bar {
@@ -11,18 +31,17 @@
   align-items: center;
   justify-content: space-between;
   padding-block: var(--header-pad);
-  opacity: 0.6;
-  transition: opacity var(--motion-fast);
 }
 
-.bar:hover,
-.bar:focus-within,
-.open .bar {
-  opacity: 1;
-}
-
+/* Muted until pointed at, then full black. */
 .home {
   display: block;
+  color: var(--color-grey-dark);
+  transition: color var(--motion-fast);
+}
+
+.home:hover,
+.home:focus-visible {
   color: var(--color-ink);
 }
 
@@ -34,15 +53,21 @@
 .toggle {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-sm);
-  color: #1c1b1f;
+  color: var(--color-grey-dark);
+  transition: color var(--motion-fast);
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  color: var(--color-ink);
 }
 
 .icon {
-  width: 29px;
-  height: 23px;
+  width: 21px;
+  height: 17px;
 }
 
 .menu {
@@ -94,4 +119,10 @@
 .secondaryLink:hover,
 .secondaryLink:focus-visible {
   color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hidden {
+    translate: 0;
+  }
 }

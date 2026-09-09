@@ -1,3 +1,5 @@
+@import './type-scale.css';
+@import './layout-scale.css';
 @import './tokens.css';
 @import './typography.css';
 @import './base.css';

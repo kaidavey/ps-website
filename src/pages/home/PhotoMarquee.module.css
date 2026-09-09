@@ -1,0 +1,51 @@
+.marquee {
+  --marquee-gap: var(--space-4);
+  --marquee-duration: 60s;
+
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: var(--marquee-gap);
+  width: max-content;
+  animation: marquee var(--marquee-duration) linear infinite;
+}
+
+.marquee:hover .track,
+.marquee:focus-within .track {
+  animation-play-state: paused;
+}
+
+.group {
+  display: flex;
+  gap: var(--marquee-gap);
+}
+
+.slide {
+  flex: 0 0 auto;
+}
+
+.slide img {
+  height: var(--gallery-image-height); /* styles/layout-scale.css */
+  width: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+/*
+ * The two copies sit in one flex row, so the row is `2 × group + gap` wide. Shifting by half of
+ * that minus half a gap lands copy two exactly where copy one began.
+ */
+@keyframes marquee {
+  to {
+    translate: calc(-50% - var(--marquee-gap) / 2) 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation-name: none;
+  }
+}

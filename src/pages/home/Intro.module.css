@@ -1,42 +1,33 @@
 .intro {
+  /* Scroll distance spent revealing the copy, on top of the pinned viewport. */
+  --reveal-distance: 160svh;
+
+  height: calc(100svh + var(--reveal-distance));
+}
+
+.panel {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-7);
+  justify-content: center;
+  gap: clamp(var(--space-3), 4svh, var(--space-5));
+  height: 100svh;
+  overflow: hidden;
 }
 
-.text {
-  display: grid;
-  gap: var(--space-4);
+/* Both widths are set in styles/layout-scale.css. */
+.text p {
+  max-width: var(--bio-column-1);
 }
 
-.text p:first-child {
-  max-width: 18.5em;
+.text p:last-child {
+  max-width: var(--bio-column-2);
 }
 
-/* Full-bleed strip that scrolls horizontally; its first slide lines up with the content edge. */
-.gallery {
-  display: flex;
-  gap: var(--space-4);
-  padding-inline: max(var(--page-gutter), calc((100% - var(--container-max)) / 2 + var(--page-gutter)));
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--page-gutter);
-  scrollbar-width: none;
-}
-
-.gallery::-webkit-scrollbar {
-  display: none;
-}
-
-.slide {
-  flex: 0 0 auto;
-  width: clamp(240px, 32vw, 508px);
-  scroll-snap-align: start;
-}
-
-.slide img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
+/* Short viewports have no room for the reveal to breathe, so shorten the track. */
+@media (max-height: 700px) {
+  .intro {
+    --reveal-distance: 120svh;
+  }
 }

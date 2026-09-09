@@ -20,6 +20,7 @@ export function Events() {
       <SectionHeader id="events-title" title={home.events.title} subtitle={home.events.subtitle} />
       <div className={styles.layout}>
         <Calendar
+          className={styles.calendar}
           eventDays={eventDays}
           selected={selectedDay}
           onSelect={(day) => setSelectedDay((current) => (current && isSameDay(current, day) ? null : day))}

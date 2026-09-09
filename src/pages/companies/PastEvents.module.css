@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1.64fr;
-  gap: clamp(var(--space-3), 4vw, 56px);
+  gap: clamp(var(--space-3), 2.6vw, 36px);
 }
 
 .item {
@@ -12,7 +12,7 @@
 
 .image {
   width: 100%;
-  height: clamp(320px, 36vw, 560px);
+  height: clamp(240px, 25vw, 380px);
   object-fit: cover;
   object-position: top;
   border-radius: var(--radius-xl);

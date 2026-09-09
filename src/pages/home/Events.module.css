@@ -1,12 +1,17 @@
 .layout {
   display: grid;
-  grid-template-columns: 37fr 63fr;
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: var(--space-4);
-  align-items: stretch;
+  align-items: start;
 }
 
 @media (max-width: 960px) {
   .layout {
     grid-template-columns: 1fr;
+  }
+
+  /* Stacked, the calendar keeps its natural size instead of stretching across the page. */
+  .calendar {
+    max-width: 400px;
   }
 }

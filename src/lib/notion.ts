@@ -4,14 +4,25 @@ export interface Member {
   id: string
   name: string
   role: string
-  bio: string
+  internship: string
   photo: string
-  linkedin: string | null
-  year: string
 }
 
 function plainText(rich: Array<{ plain_text: string }>): string {
   return rich.map((item) => item.plain_text).join('')
+}
+
+/** Reads a photo URL from either a "files" (uploaded/attached) or a legacy "url" property. */
+function extractPhotoUrl(prop: PageObjectResponse['properties'][string] | undefined): string {
+  if (prop?.type === 'files') {
+    const file = prop.files[0]
+    if (!file) return ''
+    return file.type === 'file' ? file.file.url : file.external.url
+  }
+  if (prop?.type === 'url') {
+    return prop.url ?? ''
+  }
+  return ''
 }
 
 /** Extracts a clean Member from a raw Notion page. No Notion property shapes escape this function. */
@@ -20,10 +31,8 @@ export function normalizeMember(page: PageObjectResponse): Member {
   return {
     id: page.id,
     name: props.Name?.type === 'title' ? plainText(props.Name.title) : '',
-    role: props.Role?.type === 'select' ? (props.Role.select?.name ?? '') : '',
-    bio: props.Bio?.type === 'rich_text' ? plainText(props.Bio.rich_text) : '',
-    photo: props.Photo?.type === 'url' ? (props.Photo.url ?? '') : '',
-    linkedin: props.LinkedIn?.type === 'url' ? props.LinkedIn.url : null,
-    year: props.Year?.type === 'select' ? (props.Year.select?.name ?? '') : '',
+    role: props.Role?.type === 'rich_text' ? plainText(props.Role.rich_text) : '',
+    internship: props.Internship?.type === 'rich_text' ? plainText(props.Internship.rich_text) : '',
+    photo: extractPhotoUrl(props.Photo),
   }
 }

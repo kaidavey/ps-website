@@ -5,7 +5,11 @@ export interface Member {
   name: string
   role: string
   internship: string
+  major: string
   photo: string
+  order: number | null
+  /** Raw Notion select value, e.g. "Our Board" or "Fellow 2025-2026 (Design)". Interpreted in lib/members.ts. */
+  year: string
 }
 
 function plainText(rich: Array<{ plain_text: string }>): string {
@@ -33,6 +37,9 @@ export function normalizeMember(page: PageObjectResponse): Member {
     name: props.Name?.type === 'title' ? plainText(props.Name.title) : '',
     role: props.Role?.type === 'rich_text' ? plainText(props.Role.rich_text) : '',
     internship: props.Internship?.type === 'rich_text' ? plainText(props.Internship.rich_text) : '',
+    major: props.Major?.type === 'rich_text' ? plainText(props.Major.rich_text) : '',
     photo: extractPhotoUrl(props.Photo),
+    order: props.Order?.type === 'number' ? props.Order.number : null,
+    year: props.Year?.type === 'select' ? (props.Year.select?.name ?? '') : '',
   }
 }

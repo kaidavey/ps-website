@@ -12,6 +12,9 @@ const EXPECTED_PROPERTIES: Record<string, string[]> = {
   Name: ['title'],
   Role: ['rich_text'],
   Internship: ['rich_text'],
+  Major: ['rich_text'],
+  Order: ['number'],
+  Year: ['select'],
   Photo: ['files', 'url'],
 }
 

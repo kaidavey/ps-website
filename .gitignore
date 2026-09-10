@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
@@ -28,3 +29,4 @@ dist-ssr
 
 # Fetched at build time by scripts/fetch-members.ts
 src/content/members.generated.ts
+public/members/

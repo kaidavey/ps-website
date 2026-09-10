@@ -1,0 +1,27 @@
+/* Paper's 1512px artboard, with fluid gutters and accessible smaller-screen type. */
+.page {
+  --container-outer: 100%;
+  --page-gutter: clamp(20px, 5.82vw, 120px);
+  --section-gap: clamp(72px, 9.92vw, 150px);
+  --page-bottom: clamp(100px, 19.84vw, 300px);
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-5: clamp(32px, 3.18vw, 48px);
+  --radius-xl: 36px;
+  --type-title-size: clamp(44px, 6.62vw, 100px);
+  --type-title-leading: 1.2;
+  --type-title-tracking: -0.06em;
+  --type-heading-size: clamp(28px, 2.91vw, 44px);
+  --type-heading-tracking: -0.01em;
+  --type-subtitle-size: clamp(22px, 2.39vw, 36px);
+  --type-subtitle-leading: 1.39;
+  --type-body-size: clamp(18px, 1.59vw, 24px);
+  --type-body-leading: 1.42;
+  --type-body-strong-size: var(--type-body-size);
+  --type-body-tracking: -0.01em;
+  padding-top: calc(var(--header-height) + clamp(48px, 8.13vw, 123px));
+}
+
+@media (max-width: 600px) {
+  .page { --radius-xl: 24px; }
+}

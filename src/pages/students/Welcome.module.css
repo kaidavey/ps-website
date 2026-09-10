@@ -1,17 +1,23 @@
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
+.section { display: flex; flex-direction: column; gap: var(--space-5); }
+.copy { display: grid; gap: clamp(36px, 4.24vw, 64px); }
 
-.copy {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
+/* Positions are proportional to the Paper composition, so the photos scale with the page. */
+.gallery { position: relative; aspect-ratio: 1336 / 419; }
+.print { position: absolute; width: 16.84%; aspect-ratio: 225 / 343; transform-origin: 0 0; }
+.print:nth-child(1) { left: -0.2%; top: 5.09%; rotate: -4.03deg; }
+.print:nth-child(2) { left: 16.96%; top: 25.90%; rotate: 2.83deg; }
+.print:nth-child(3) { left: 32.1%; top: 0.49%; rotate: -1.02deg; }
+.print:nth-child(4) { left: 48.53%; top: 21.18%; rotate: 2.76deg; }
+.print:nth-child(5) { left: 64.36%; top: -0.74%; rotate: 4.94deg; }
+.frame { position: absolute; left: 4.89%; top: 2.04%; width: 92%; height: 94.17%; }
+.photo { position: absolute; left: 9.78%; top: 8.16%; width: 81.78%; height: 71.43%; object-fit: cover; }
+.print:nth-child(1) .photo { object-position: 44.96% 100%; filter: brightness(.92); }
+.print:nth-child(2) .photo { object-position: 49.63% 50.427%; }
+.print:nth-child(3) .photo { object-position: 52.195% 100%; }
+.print:nth-child(4) .photo { object-position: 0 90.476%; }
 
-/* Paper: the strip mixes portrait and landscape shots, so each photo keeps its own shape. */
-.gallery {
-  --marquee-image-height: var(--students-gallery-height); /* styles/layout-scale.css */
-  --marquee-image-aspect: auto;
+@media (max-width: 600px) {
+  .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 10px; padding: 14px 8px; aspect-ratio: auto; }
+  .print:nth-child(n) { position: relative; left: auto; top: auto; width: 100%; transform-origin: center; }
+  .print:nth-child(5) { grid-column: 1 / -1; width: calc(50% - 5px); justify-self: center; }
 }

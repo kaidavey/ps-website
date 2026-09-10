@@ -1,0 +1,30 @@
+.page {
+  composes: page from "../../components/MarketingPage.module.css";
+  --type-stat-size: clamp(40px, 4.24vw, 64px);
+}
+
+.page input, .page select, .page textarea {
+  min-height: 80px;
+  padding-inline: 32px;
+  border-radius: 16px;
+  letter-spacing: -0.01em;
+}
+
+.page textarea {
+  min-height: clamp(220px, 20vw, 320px);
+  padding-block: 24px;
+}
+
+.page form button {
+  min-height: 80px;
+  padding: 24px 42px;
+  border-radius: 16px;
+  font-size: clamp(20px, 1.72vw, 26px);
+}
+
+@media (max-width: 600px) {
+  .page input, .page select, .page textarea { min-height: 60px; padding-inline: 20px; }
+  .page select { padding-right: 46px; }
+  .page textarea { min-height: 220px; }
+  .page form button { min-height: 60px; padding-block: 16px; }
+}

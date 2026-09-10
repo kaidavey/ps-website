@@ -66,3 +66,18 @@ words fade at once with `--reveal-window` in `components/RevealText.module.css`.
 
 Both the reveal and the marquee stop under `prefers-reduced-motion`, and the copy renders at full
 contrast when scripting is unavailable.
+
+## For Students
+
+`components/MarketingPage.module.css` shares the Paper artboard’s larger type, fluid content
+width, and section spacing between For Students and For Companies. Each page composes this scale
+and adds its own component sizing. Other pages retain their default styles.
+The five welcome photos and print frame are optimized WebP assets in `assets/images/students/`.
+The mobile composition reflows into two columns; the cohort cards and application banner stack.
+
+The application URL is configured in `content/site.ts`. Newsletter signup uses
+`VITE_NEWSLETTER_FORM_ENDPOINT` (or `site.forms.newsletter`) and POSTs URL-encoded `name` and `email`.
+Configure a service that accepts browser requests and returns a successful HTTP status only after
+accepting the signup. Without an endpoint, the form reports that signup is unavailable and sends
+nothing. Loading, failure, timeout, and success states are handled in `components/Newsletter.tsx`.
+The FAQ copy is provisional because the Paper artboard contains placeholder questions.

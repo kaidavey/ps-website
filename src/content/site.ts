@@ -38,8 +38,7 @@ export const site = {
   },
 
   links: {
-    // TODO: link to the live application form.
-    apply: 'https://forms.gle/',
+    apply: 'https://docs.google.com/forms/d/e/1FAIpQLSeFxgcWagqbIe5B-suR2Df052eMjwc-NtWpPU6jYDN2zbUaZQ/viewform?usp=header',
   },
 
   /**

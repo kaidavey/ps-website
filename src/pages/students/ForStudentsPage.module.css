@@ -1,0 +1,47 @@
+.page {
+  composes: page from "../../components/MarketingPage.module.css";
+}
+
+.apply {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.14fr);
+  padding: clamp(28px, 4.63vw, 70px) clamp(24px, 5.3vw, 80px);
+}
+
+.apply a {
+  padding: 12px 30px;
+  border-radius: 15px;
+}
+
+.newsletter form {
+  gap: 24px;
+}
+
+.newsletter form > div {
+  flex: 1 1 260px;
+  max-width: 397px;
+}
+
+.newsletter input {
+  min-height: 80px;
+  padding-inline: 32px;
+  border-radius: 16px;
+  letter-spacing: -0.01em;
+}
+
+.newsletter button {
+  min-height: 80px;
+  padding: 24px 42px;
+  font-size: clamp(20px, 1.72vw, 26px);
+  border-radius: 16px;
+}
+
+@media (max-width: 900px) {
+  .apply { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .newsletter form > div { flex-basis: 100%; max-width: none; }
+  .newsletter input, .newsletter button { min-height: 60px; }
+  .newsletter input { padding-inline: 20px; }
+  .newsletter button { padding-block: 16px; }
+}

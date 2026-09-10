@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container'
-import { PhotoMarquee } from '@/components/PhotoMarquee'
+import frame from '@/assets/images/students/frame.webp'
 import { SectionHeader } from '@/components/SectionHeader'
 import { students } from '@/content/students'
 import styles from './Welcome.module.css'
@@ -14,7 +14,16 @@ export function Welcome() {
         </h1>
         <SectionHeader title={welcome.title} subtitle={welcome.subtitle} />
       </Container>
-      <PhotoMarquee photos={welcome.photos} className={styles.gallery} />
+      <Container>
+        <div className={styles.gallery}>
+          {welcome.photos.map((photo) => (
+            <div key={photo.src} className={styles.print}>
+              <img src={frame} alt="" className={styles.frame} width="207" height="323" />
+              <img src={photo.src} alt={photo.alt} className={styles.photo} />
+            </div>
+          ))}
+        </div>
+      </Container>
     </section>
   )
 }

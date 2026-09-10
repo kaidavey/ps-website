@@ -1,8 +1,6 @@
-/* Caps the measure so the paragraphs stay readable instead of running the full column. */
 .copy {
   display: grid;
   gap: var(--space-3);
-  max-width: 80ch;
 }
 
 .disciplines {
@@ -19,7 +17,7 @@
   aspect-ratio: 421 / 284;
   padding: var(--space-3);
   overflow: hidden;
-  border-radius: var(--radius-xl);
+  border-radius: 30px;
   text-align: center;
 }
 
@@ -34,6 +32,10 @@
 /* The soft shadow keeps the label legible on the pale Product Design art. */
 .name {
   position: relative;
+  font-size: clamp(24px, 2.65vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  max-width: 9em;
   color: #fff;
   text-shadow: 0 1px 16px rgb(0 0 0 / 20%);
 }

@@ -4,8 +4,8 @@
 }
 
 .item {
-  --pad-block: clamp(18px, 1.8vw, 28px);
-  --pad-inline: clamp(20px, 2.6vw, 40px);
+  --pad-block: clamp(18px, 2.39vw, 36px);
+  --pad-inline: clamp(20px, 3.18vw, 48px);
 
   border-radius: var(--radius-xl);
   background: var(--color-surface);
@@ -29,8 +29,8 @@
 
 .icon {
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   transition: rotate var(--motion-fast);
 }
 
@@ -44,3 +44,5 @@
   margin: calc(var(--space-2) - var(--pad-block)) var(--pad-inline) var(--pad-block);
   color: var(--color-ink-muted);
 }
+
+.question span { font-size: clamp(20px, 1.985vw, 30px); line-height: 1.67; }

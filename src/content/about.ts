@@ -1,5 +1,5 @@
-export const students = {
-  title: 'For Students',
+export const about = {
+  title: 'About',
 
   members: {
     title: 'Our Board',

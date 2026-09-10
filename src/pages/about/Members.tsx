@@ -1,6 +1,6 @@
 import { MemberCard } from '@/components/MemberCard'
 import { Section } from '@/components/Section'
-import { students } from '@/content/students'
+import { about } from '@/content/about'
 import { members } from '@/content/members.generated'
 import styles from './Members.module.css'
 
@@ -8,7 +8,7 @@ export function Members() {
   return (
     <Section aria-labelledby="members-title">
       <h2 id="members-title" className="type-heading">
-        {students.members.title}
+        {about.members.title}
       </h2>
 
       {members.length > 0 ? (
@@ -20,7 +20,7 @@ export function Members() {
           ))}
         </ul>
       ) : (
-        <p className="type-body">{students.members.empty}</p>
+        <p className="type-body">{about.members.empty}</p>
       )}
     </Section>
   )

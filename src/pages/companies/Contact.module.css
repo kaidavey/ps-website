@@ -1,8 +1,10 @@
+/* Paper: the form occupies ~65% of the measure rather than the full width. */
 .form {
   display: grid;
   gap: var(--space-4);
   justify-items: start;
   width: 100%;
+  max-width: 720px;
 }
 
 .fields {
@@ -16,21 +18,18 @@
   grid-column: 1 / -1;
 }
 
+/* Submission state for the async submit handler in Contact.tsx. */
+.form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.status {
+  max-width: 42em;
+}
+
 @media (max-width: 600px) {
   .fields {
     grid-template-columns: 1fr;
   }
 }
-
-.form input, .form select, .form textarea {
-  min-width: 0;
-  min-height: clamp(52px, 5.3vw, 80px);
-  padding-inline: clamp(18px, 2.12vw, 32px);
-  border-radius: 16px;
-}
-.form select { padding-right: 52px; }
-.form textarea { min-height: clamp(200px, 19.65vw, 297px); padding-block: 24px; }
-.form input::placeholder, .form textarea::placeholder, .form select:invalid { color: #767676; }
-.form button { min-height: 56px; padding: 24px 42px; border-radius: 16px; }
-.form button:disabled { cursor: wait; opacity: .65; }
-.status { max-width: 42em; }

@@ -9,26 +9,28 @@
   gap: var(--space-3);
 }
 
+/* Paper: the summary takes ~40% of the measure, the stats the rest. */
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--space-5);
+  display: grid;
+  grid-template-columns: minmax(0, 42%) minmax(0, 1fr);
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
+  align-items: start;
 }
 
 .summary {
-  max-width: 530px;
   color: var(--color-ink-2);
 }
 
+/* Paper: the middle stat is wider than its neighbours (201 / 259 / 201). */
 .stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: var(--space-3);
+  align-items: start;
 }
 
 .stat {
-  flex: 1 1 110px;
+  min-width: 0;
   display: grid;
   gap: var(--space-1);
   justify-items: center;
@@ -52,7 +54,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: var(--space-3);
 }
 
 .clientsLabel {
@@ -67,14 +69,25 @@
 }
 
 .logos img {
-  height: clamp(30px, 4.3vw, 65px);
+  height: clamp(26px, 3.2vw, 42px);
   width: auto;
   filter: saturate(0);
   opacity: 0.6;
 }
 
-.row { display: grid; grid-template-columns: minmax(0, 530px) minmax(0, 1fr); gap: 48px; }
-.stats { display: grid; grid-template-columns: 1fr 1.3fr 1fr; align-items: start; }
-.stat { min-width: 0; }
-@media (max-width: 1100px) { .row { grid-template-columns: 1fr; } .stats { max-width: 760px; width: 100%; } }
-@media (max-width: 600px) { .stats { gap: 12px; } .logos { gap: 24px; } .logos img { max-width: 135px; object-fit: contain; } }
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats {
+    gap: var(--space-2);
+  }
+
+  .logos img {
+    max-width: 120px;
+    object-fit: contain;
+  }
+}

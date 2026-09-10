@@ -7,6 +7,7 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  column-gap: var(--space-3);
   justify-items: center;
   align-items: center;
   height: 31px;
@@ -43,6 +44,7 @@
 
 .step {
   display: grid;
+  align-content: start;
   gap: var(--space-3);
   justify-items: center;
   padding: var(--space-3) var(--space-3) var(--space-4);
@@ -66,10 +68,10 @@
 }
 
 .description {
-  max-width: 15em;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
+/* The connecting track only reads as a line while the four steps sit in one row. */
 @media (max-width: 900px) {
   .track {
     display: none;
@@ -79,7 +81,3 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   }
 }
-
-.track { column-gap: 24px; }
-.step { padding: 24px 24px 36px; align-content: start; gap: 23px; }
-.description { max-width: none; text-wrap: pretty; }

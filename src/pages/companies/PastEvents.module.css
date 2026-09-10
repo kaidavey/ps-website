@@ -1,7 +1,8 @@
+/* Paper: three columns at 333 / 336 / 546 — two equal posts and a wider photo. */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1.64fr;
-  gap: clamp(var(--space-3), 2.6vw, 56.8px);
+  gap: clamp(var(--space-3), 2.6vw, 44px);
 }
 
 .item {
@@ -10,12 +11,18 @@
   align-content: start;
 }
 
+/* A shared height with `cover` keeps the row aligned while the columns differ in width. */
 .image {
   width: 100%;
-  height: clamp(240px, 37.08vw, 560.54px);
+  height: clamp(240px, 32vw, 460px);
   object-fit: cover;
   object-position: top;
-  border-radius: 0;
+}
+
+/* Paper rounds only the last image — the first two are square-cornered post screenshots. */
+.item:last-child .image {
+  border-radius: var(--radius-xl);
+  object-position: 57.45% center;
 }
 
 .caption {
@@ -42,6 +49,3 @@
     aspect-ratio: 4 / 5;
   }
 }
-
-.item:last-child .image { border-radius: 30px; object-position: 57.45% center; }
-.caption { text-transform: capitalize; }

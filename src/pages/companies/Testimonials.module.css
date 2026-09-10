@@ -3,11 +3,12 @@
   gap: var(--space-5);
 }
 
+/* Paper: meta column ~22% of the card, quote taking the rest, on the surface tint. */
 .card {
   display: grid;
-  grid-template-columns: minmax(0, 293px) minmax(0, 1fr);
-  gap: var(--space-4) clamp(32px, 5.82vw, 88px);
-  padding: clamp(24px, 4.63vw, 70px) clamp(20px, 5.3vw, 80px);
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: var(--space-4) clamp(var(--space-4), 5vw, 64px);
+  padding: clamp(28px, 3.4vw, 56px) clamp(20px, 3.6vw, 64px);
   border-radius: var(--radius-xl);
   background: var(--color-surface);
 }
@@ -26,7 +27,7 @@
 }
 
 .logo {
-  height: 56px;
+  height: clamp(28px, 3vw, 40px);
   width: auto;
   filter: saturate(0);
 }
@@ -48,10 +49,10 @@
 
 .avatar {
   flex-shrink: 0;
-  width: clamp(64px, 6.68vw, 101px);
+  width: clamp(52px, 5vw, 72px);
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
 }
 
 .role {
@@ -59,13 +60,13 @@
 }
 
 .quote {
-  max-width: 90ch;
   display: grid;
   gap: 1lh;
   align-content: start;
+  max-width: 90ch;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .card {
     grid-template-columns: 1fr;
   }

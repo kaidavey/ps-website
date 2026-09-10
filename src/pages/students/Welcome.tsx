@@ -7,14 +7,14 @@ import styles from './Welcome.module.css'
 export function Welcome() {
   const { welcome } = students
   return (
-    <Container as="section" className={styles.section} aria-labelledby="students-title">
-      <h1 id="students-title" className="type-title">
-        {students.title}
-      </h1>
-      <div className={styles.group}>
+    <section className={styles.section} aria-labelledby="students-title">
+      <Container className={styles.copy}>
+        <h1 id="students-title" className="type-title">
+          {students.title}
+        </h1>
         <SectionHeader title={welcome.title} subtitle={welcome.subtitle} />
-        <PhotoMarquee photos={welcome.photos} className={styles.gallery} />
-      </div>
-    </Container>
+      </Container>
+      <PhotoMarquee photos={welcome.photos} className={styles.gallery} />
+    </section>
   )
 }

@@ -1,13 +1,13 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 
-.group {
+.copy {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
 /* Paper: the strip mixes portrait and landscape shots, so each photo keeps its own shape. */

@@ -34,6 +34,7 @@
 .slide img {
   height: var(--marquee-image-height, var(--gallery-image-height));
   width: auto;
+  max-width: none;
   aspect-ratio: var(--marquee-image-aspect, 3 / 2);
   object-fit: cover;
   border-radius: var(--radius-sm);

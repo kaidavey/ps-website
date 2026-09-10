@@ -1,10 +1,10 @@
 import { Container } from '@/components/Container'
+import { PhotoMarquee } from '@/components/PhotoMarquee'
 import { RevealText } from '@/components/RevealText'
 import { home } from '@/content/home'
 import { cx } from '@/lib/cx'
 import { useScrollProgress } from '@/lib/useScrollProgress'
 import styles from './Intro.module.css'
-import { PhotoMarquee } from './PhotoMarquee'
 
 /**
  * Full-viewport panel that stays pinned while the bio darkens word by word. The section itself is

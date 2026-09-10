@@ -52,26 +52,9 @@ export const home = {
     },
   ],
 
-  apply: {
-    title: 'Applications Open',
-    paragraphs: [
-      'Fall Quarter is right around the corner and we are taking applicants! Start by filling out our interest form.',
-      'Remember, any major and any skill level can join! We’d love to see your application.',
-    ],
-    primary: 'Apply',
-    secondary: 'Learn more',
-  },
-
   events: {
     title: 'Upcoming Events',
     subtitle: 'Curious to learn more? Join us for our external events.',
     empty: 'Nothing on the calendar right now. Follow us on Luma to hear about the next one.',
-  },
-
-  newsletter: {
-    title: 'Join Our Newsletter',
-    subtitle:
-      'All UCLA students (including non-fellows) can tune into our monthly newsletter exploring recent product news and career guidance.',
-    submit: 'Subscribe',
   },
 } as const

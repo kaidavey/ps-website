@@ -1,0 +1,50 @@
+/* Caps the measure so the paragraphs stay readable instead of running the full column. */
+.copy {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 80ch;
+}
+
+.disciplines {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(var(--space-3), 2.6vw, 36px);
+}
+
+/* Paper: abstract art under a centred white label, 421 × 284. */
+.discipline {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 421 / 284;
+  padding: var(--space-3);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The soft shadow keeps the label legible on the pale Product Design art. */
+.name {
+  position: relative;
+  color: #fff;
+  text-shadow: 0 1px 16px rgb(0 0 0 / 20%);
+}
+
+/* Stacked, the tiles run the full column, so a wider crop keeps them from getting too tall. */
+@media (max-width: 700px) {
+  .disciplines {
+    grid-template-columns: 1fr;
+  }
+
+  .discipline {
+    aspect-ratio: 5 / 2;
+  }
+}

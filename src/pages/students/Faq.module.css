@@ -1,0 +1,46 @@
+.list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.item {
+  --pad-block: clamp(18px, 1.8vw, 28px);
+  --pad-inline: clamp(20px, 2.6vw, 40px);
+
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--pad-block) var(--pad-inline);
+  border-radius: inherit;
+  list-style: none;
+  cursor: pointer;
+}
+
+/* Safari still draws its own disclosure triangle unless the marker is hidden this way. */
+.question::-webkit-details-marker {
+  display: none;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  transition: rotate var(--motion-fast);
+}
+
+.item[open] .icon {
+  rotate: 45deg;
+}
+
+/* Pulled up into the question's bottom padding so the answer reads as part of the same row. */
+.answer {
+  max-width: 64ch;
+  margin: calc(var(--space-2) - var(--pad-block)) var(--pad-inline) var(--pad-block);
+  color: var(--color-ink-muted);
+}

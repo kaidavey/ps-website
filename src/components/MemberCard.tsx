@@ -5,10 +5,12 @@ import styles from './MemberCard.module.css'
 
 interface MemberCardProps {
   member: Member
+  /** Board cards show role and internship; fellow cards show major. Two variants in the Paper design. */
+  variant: 'board' | 'fellow'
 }
 
-/** A single roster entry: photo, name, role and internship — matches the Paper "Member Profile" design. */
-export function MemberCard({ member }: MemberCardProps) {
+/** A single roster entry: photo, name, and the rows for its variant — matches the Paper "Member Profile" design. */
+export function MemberCard({ member, variant }: MemberCardProps) {
   const [photoFailed, setPhotoFailed] = useState(false)
 
   return (
@@ -28,7 +30,7 @@ export function MemberCard({ member }: MemberCardProps) {
       <div className={styles.body}>
         <p className="type-body-strong">{member.name}</p>
 
-        {member.role && (
+        {variant === 'board' && member.role && (
           <div className={styles.row}>
             <svg viewBox="0 0 16 18" className={styles.icon} aria-hidden="true" focusable="false">
               <path
@@ -44,7 +46,7 @@ export function MemberCard({ member }: MemberCardProps) {
           </div>
         )}
 
-        {member.internship && (
+        {variant === 'board' && member.internship && (
           <div className={styles.row}>
             <svg viewBox="0 0 24 24" className={styles.icon} aria-hidden="true" focusable="false">
               <rect x="2" y="7" width="20" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
@@ -58,6 +60,22 @@ export function MemberCard({ member }: MemberCardProps) {
               />
             </svg>
             <span className={cx('type-body', styles.text)}>{member.internship}</span>
+          </div>
+        )}
+
+        {variant === 'fellow' && member.major && (
+          <div className={styles.row}>
+            <svg viewBox="0 0 24 24" className={styles.icon} aria-hidden="true" focusable="false">
+              <path
+                d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={cx('type-body', styles.text)}>{member.major}</span>
           </div>
         )}
       </div>

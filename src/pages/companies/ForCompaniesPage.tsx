@@ -1,4 +1,4 @@
-import { PageContent } from '@/components/PageContent'
+import styles from './ForCompaniesPage.module.css'
 import { companies } from '@/content/companies'
 import { usePageTitle } from '@/lib/usePageTitle'
 import { Contact } from './Contact'
@@ -11,13 +11,13 @@ import { Timeline } from './Timeline'
 export function ForCompaniesPage() {
   usePageTitle(companies.title)
   return (
-    <PageContent offsetHeader>
+    <div className={styles.page}>
       <Overview />
       <Timeline />
       <Testimonials />
       <Partnerships />
       <PastEvents />
       <Contact />
-    </PageContent>
+    </div>
   )
 }

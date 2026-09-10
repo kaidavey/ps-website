@@ -1,16 +1,18 @@
 import { Container } from '@/components/Container'
 import { PageContent } from '@/components/PageContent'
-import { students } from '@/content/students'
+import { about } from '@/content/about'
 import { usePageTitle } from '@/lib/usePageTitle'
 import { Members } from './Members'
+import { Mission } from './Mission'
 
-export function ForStudentsPage() {
-  usePageTitle(students.title)
+export function AboutPage() {
+  usePageTitle(about.title)
   return (
     <PageContent offsetHeader>
       <Container>
-        <h1 className="type-title">{students.title}</h1>
+        <h1 className="type-title">{about.title}</h1>
       </Container>
+      <Mission />
       <Members />
     </PageContent>
   )

@@ -1,0 +1,39 @@
+/* Paper: For Companies [FINAL], 1512px artboard. Scoped to this route. */
+.page {
+  /* Follow the viewport instead of capping desktop content at the artboard width. */
+  --page-gutter: max(20px, 5.82vw);
+  --container-outer: 100%;
+  --type-title-size: clamp(2.75rem, 6.62vw, 6.25rem);
+  --type-title-leading: 1.2;
+  --type-title-tracking: -0.06em;
+  --type-heading-size: clamp(1.75rem, 2.92vw, 2.75rem);
+  --type-heading-leading: 1.23;
+  --type-heading-tracking: -0.01em;
+  --type-body-size: clamp(1rem, 1.59vw, 1.5rem);
+  --type-body-leading: 1.4167;
+  --type-body-tracking: -0.01em;
+  --type-body-strong-size: var(--type-body-size);
+  --type-body-strong-leading: 1.25;
+  --type-subtitle-size: clamp(1.25rem, 2.39vw, 2.25rem);
+  --type-subtitle-leading: 1.389;
+  --type-stat-size: clamp(2.25rem, 4.63vw, 4.375rem);
+  --type-stat-leading: 1.2;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 36px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 9.93vw, 150px);
+  padding-top: clamp(126px, 13.83vw, 209px);
+  padding-bottom: clamp(96px, 19.85vw, 300px);
+}
+.page :global(.type-body), .page :global(.type-body-strong) { text-wrap: pretty; }
+.page :global(.type-subtitle) { max-width: none; text-wrap: pretty; }
+@media (max-width: 600px) {
+  .page { --space-3: 20px; --space-4: 24px; --space-5: 28px; --space-6: 40px; --radius-xl: 24px; }
+}

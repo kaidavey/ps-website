@@ -1,0 +1,46 @@
+/*
+ * Paper: the mission card sits label-left / copy-right with a wide gap between them, over a
+ * 2×2 photo grid. Both collapse to a single column as the viewport narrows.
+ */
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: clamp(28px, 3.4vw, 56px) clamp(20px, 3.6vw, 64px);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+}
+
+/* Caps the measure so the copy stays readable instead of stretching the full card width. */
+.body {
+  flex: 0 1 min(100%, 54ch);
+}
+
+@media (max-width: 700px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(var(--space-3), 2.6vw, 36px);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 650 / 419;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+}
+
+@media (max-width: 600px) {
+  .photos {
+    grid-template-columns: 1fr;
+  }
+}

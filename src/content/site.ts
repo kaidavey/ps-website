@@ -14,9 +14,8 @@ export const site = {
   ],
 
   social: [
-    // TODO: confirm the Luma calendar URL.
-    { label: 'Instagram', href: 'https://www.instagram.com/productspaceucla/' },
-    { label: 'Luma', href: 'https://lu.ma/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/productspaceatucla/' },
+    { label: 'Luma', href: 'https://luma.com/productspaceucla' },
   ],
 
   /** The Applications Open banner, shown on Home and For Students. */

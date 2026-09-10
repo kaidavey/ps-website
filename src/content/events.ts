@@ -21,7 +21,7 @@ export const events: SiteEvent[] = [
     start: '2026-09-15T18:00:00-07:00',
     host: 'Product Space at UCLA',
     location: 'Boelter Hall 3400',
-    url: 'https://lu.ma/',
+    url: 'https://luma.com/productspaceucla',
   },
   {
     id: 'pm-panel',
@@ -29,7 +29,7 @@ export const events: SiteEvent[] = [
     start: '2026-09-18T19:00:00-07:00',
     host: 'Product Space at UCLA',
     location: 'Anderson School of Management',
-    url: 'https://lu.ma/',
+    url: 'https://luma.com/productspaceucla',
   },
   {
     id: 'open-house',
@@ -37,7 +37,7 @@ export const events: SiteEvent[] = [
     start: '2026-09-22T17:30:00-07:00',
     host: 'Product Space at UCLA',
     location: 'Kerckhoff Grand Salon',
-    url: 'https://lu.ma/',
+    url: 'https://luma.com/productspaceucla',
   },
 ]
 

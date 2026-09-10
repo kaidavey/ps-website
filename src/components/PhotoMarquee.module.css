@@ -26,10 +26,16 @@
   flex: 0 0 auto;
 }
 
+/*
+ * A page can resize the photos by setting these on the marquee through `className`:
+ *   --marquee-image-height  defaults to --gallery-image-height (styles/layout-scale.css)
+ *   --marquee-image-aspect  defaults to a 3:2 crop; `auto` keeps each photo's own shape
+ */
 .slide img {
-  height: var(--gallery-image-height); /* styles/layout-scale.css */
+  height: var(--marquee-image-height, var(--gallery-image-height));
   width: auto;
-  aspect-ratio: 3 / 2;
+  max-width: none;
+  aspect-ratio: var(--marquee-image-aspect, 3 / 2);
   object-fit: cover;
   border-radius: var(--radius-sm);
 }

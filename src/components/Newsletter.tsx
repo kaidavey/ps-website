@@ -1,13 +1,12 @@
-import { Button } from '@/components/Button'
-import { TextField } from '@/components/FormField'
-import { Section } from '@/components/Section'
-import { SectionHeader } from '@/components/SectionHeader'
-import { home } from '@/content/home'
 import { site } from '@/content/site'
+import { Button } from './Button'
+import { TextField } from './FormField'
+import { Section } from './Section'
+import { SectionHeader } from './SectionHeader'
 import styles from './Newsletter.module.css'
 
 export function Newsletter() {
-  const { newsletter } = home
+  const { newsletter } = site
   return (
     <Section aria-labelledby="newsletter-title">
       <SectionHeader id="newsletter-title" title={newsletter.title} subtitle={newsletter.subtitle} />

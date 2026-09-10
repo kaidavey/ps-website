@@ -1,7 +1,26 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { Member } from '@/lib/notion'
 import { cx } from '@/lib/cx'
 import styles from './MemberCard.module.css'
+
+/** Lucide geometry on its native 24-unit grid, whose built-in margin keeps the 2-unit stroke from clipping. */
+function Icon({ children }: { children: ReactNode }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={styles.icon}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {children}
+    </svg>
+  )
+}
 
 interface MemberCardProps {
   member: Member
@@ -31,51 +50,33 @@ export function MemberCard({ member, variant }: MemberCardProps) {
         <p className="type-body-strong">{member.name}</p>
 
         {variant === 'board' && member.role && (
-          <div className={styles.row}>
-            <svg viewBox="0 0 16 18" className={styles.icon} aria-hidden="true" focusable="false">
-              <path
-                d="M13 5a5 5 0 1 1-10 0 5 5 0 0 1 10 0ZM16 18a8 8 0 0 0-16 0"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className={cx('type-body', styles.text)}>{member.role}</span>
+          <div className={cx('type-body', styles.row)}>
+            <Icon>
+              <circle cx="12" cy="8" r="5" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </Icon>
+            <span className={styles.text}>{member.role}</span>
           </div>
         )}
 
         {variant === 'board' && member.internship && (
-          <div className={styles.row}>
-            <svg viewBox="0 0 24 24" className={styles.icon} aria-hidden="true" focusable="false">
-              <rect x="2" y="7" width="20" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-              <path
-                d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className={cx('type-body', styles.text)}>{member.internship}</span>
+          <div className={cx('type-body', styles.row)}>
+            <Icon>
+              <path d="M12 12h.01" />
+              <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+              <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+              <rect width="20" height="14" x="2" y="6" rx="2" />
+            </Icon>
+            <span className={styles.text}>{member.internship}</span>
           </div>
         )}
 
         {variant === 'fellow' && member.major && (
-          <div className={styles.row}>
-            <svg viewBox="0 0 24 24" className={styles.icon} aria-hidden="true" focusable="false">
-              <path
-                d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className={cx('type-body', styles.text)}>{member.major}</span>
+          <div className={cx('type-body', styles.row)}>
+            <Icon>
+              <path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+            </Icon>
+            <span className={styles.text}>{member.major}</span>
           </div>
         )}
       </div>

@@ -26,17 +26,19 @@
 
 .row {
   display: flex;
-  align-items: center;
-  gap: var(--space-1);
+  align-items: flex-start;
+  gap: var(--space-2);
+  color: var(--color-ink-muted);
 }
 
+/* Centres the icon on the first line of text, so it stays put when the text wraps. */
 .icon {
-  width: 14px;
-  height: 14px;
   flex-shrink: 0;
-  color: var(--color-ink-muted);
+  width: 16px;
+  height: 16px;
+  margin-top: calc((1lh - 16px) / 2);
 }
 
 .text {
-  color: var(--color-ink-muted);
+  min-width: 0;
 }

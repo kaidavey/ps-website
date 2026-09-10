@@ -1,6 +1,7 @@
+/* 170px keeps names and roles on one line, and fits exactly 5 per row at the 1120px measure. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: clamp(var(--space-3), 2.6vw, 36px);
 }
 

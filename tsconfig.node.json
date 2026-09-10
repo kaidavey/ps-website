@@ -6,6 +6,7 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
     "strict": true,
     "types": ["node"]
   },

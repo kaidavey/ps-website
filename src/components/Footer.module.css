@@ -4,6 +4,8 @@
 }
 
 .top {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -61,6 +63,8 @@
 
 /* Soft colour wash across the bottom of the page. */
 .glow {
+  /* Decorative layers extend behind navigation and must never intercept clicks. */
+  pointer-events: none;
   position: relative;
   height: clamp(120px, 13vw, 190px);
   margin-top: var(--space-5);

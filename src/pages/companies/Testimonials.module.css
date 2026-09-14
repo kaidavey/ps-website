@@ -29,6 +29,9 @@
 .logo {
   height: clamp(28px, 3vw, 40px);
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left;
   filter: saturate(0);
 }
 
@@ -45,6 +48,8 @@
 .author > div {
   display: grid;
   gap: var(--space-1);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .avatar {

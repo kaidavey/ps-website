@@ -18,3 +18,6 @@
     flex: 1 1 100%;
   }
 }
+
+.status:empty { display: none; }
+.submit:disabled { cursor: wait; opacity: .65; }

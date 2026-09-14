@@ -41,10 +41,11 @@ export function EventList({ events, emptyMessage, filterLabel, onClearFilter }: 
                   <li key={event.id}>
                     <a href={event.url} target="_blank" rel="noreferrer" className={styles.card}>
                       <div className={styles.details}>
-                        <p className={cx('type-label', styles.muted)}>{formatTime(new Date(event.start))}</p>
+                        <p className={cx('type-label', styles.muted)}>{event.allDay ? 'All day' : formatTime(new Date(event.start))}</p>
                         <h3 className="type-body-strong">{event.title}</h3>
                         <p className={cx('type-body', styles.muted)}>By {event.host}</p>
                         <p className={cx('type-body', styles.muted)}>{event.location}</p>
+                        <span className={styles.register}>View event on Luma ↗</span>
                       </div>
                       {event.image && <img src={event.image} alt="" className={styles.thumb} loading="lazy" />}
                     </a>

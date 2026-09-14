@@ -37,6 +37,12 @@ export const site = {
     submit: 'Subscribe',
   },
 
+  events: {
+    calendarUrl: 'https://luma.com/productspaceucla',
+    feedUrl: '/api/luma-calendar',
+    embedUrl: 'https://luma.com/embed/calendar/cal-TH7D6gDn85lzYyk/events',
+  },
+
   links: {
     apply: 'https://docs.google.com/forms/d/e/1FAIpQLSeFxgcWagqbIe5B-suR2Df052eMjwc-NtWpPU6jYDN2zbUaZQ/viewform?usp=header',
   },

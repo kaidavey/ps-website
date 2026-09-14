@@ -81,3 +81,19 @@ Configure a service that accepts browser requests and returns a successful HTTP 
 accepting the signup. Without an endpoint, the form reports that signup is unavailable and sends
 nothing. Loading, failure, timeout, and success states are handled in `components/Newsletter.tsx`.
 The FAQ copy is provisional because the Paper artboard contains placeholder questions.
+
+## Live events
+
+Home’s Upcoming Events section uses the Product Space UCLA public iCal feed. The existing mini
+calendar marks event dates and shows links beneath it for a selected date. The right column
+contains the native Luma calendar embed and always shows all upcoming events independently.
+Times are displayed in the visitor’s timezone, stated below the calendar. Luma controls the embedded cards and registration flow. Published events refresh on page load and every five minutes
+while the page is visible, subject to Luma’s own feed caching. Failed refreshes retain loaded events;
+initial failures show a retry control and the direct Luma calendar link remains available.
+
+`/api/luma-calendar` proxies the public feed through Vercel (in `vercel.json`) and through Vite’s
+server/preview proxy locally. Keep both upstream URLs in sync if the calendar changes. No API key
+is needed. Restart the local server after proxy configuration changes. Other hosting providers need
+an equivalent proxy route; a static file upload alone does not supply this route.
+
+Run `node --test scripts/luma.test.ts` to check calendar parsing and day selection.

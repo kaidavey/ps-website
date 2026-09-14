@@ -21,11 +21,22 @@ function notionMembersPlugin(): Plugin {
   }
 }
 
+// Same public-feed route as the production Vercel rewrite; no credentials required.
+const lumaProxy = {
+  '/api/luma-calendar': {
+    target: 'https://api.luma.com',
+    changeOrigin: true,
+    rewrite: () => '/ics/get?entity=calendar&id=cal-TH7D6gDn85lzYyk',
+  },
+}
+
 export default defineConfig(({ mode }) => {
   Object.assign(process.env, loadEnv(mode, process.cwd(), ''))
 
   return {
     plugins: [react(), notionMembersPlugin()],
+    server: { proxy: lumaProxy },
+    preview: { proxy: lumaProxy },
     resolve: {
       alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
     },

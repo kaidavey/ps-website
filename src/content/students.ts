@@ -3,6 +3,7 @@ import photo2 from '@/assets/images/students/welcome-2.webp'
 import photo3 from '@/assets/images/students/welcome-3.webp'
 import photo4 from '@/assets/images/students/welcome-4.webp'
 import photo5 from '@/assets/images/students/welcome-5.webp'
+import photo6 from '@/assets/images/students/welcome-6.webp'
 import disciplineDesign from '@/assets/images/discipline-design.jpg'
 import disciplineManagement from '@/assets/images/discipline-management.jpg'
 import disciplineMarketing from '@/assets/images/discipline-marketing.jpg'
@@ -13,12 +14,14 @@ export const students = {
   welcome: {
     title: 'Hey Bruins!',
     subtitle: 'We’re So Glad You’re Here',
+    /** Left to right, as the prints sit in the Paper composition. */
     photos: [
-      { src: photo1, alt: 'Two members smiling together at an evening event' },
-      { src: photo2, alt: 'Members posing together outside a building' },
-      { src: photo3, alt: 'Members gathered on a lawn surrounded by mountains' },
+      { src: photo1, alt: 'Members gathered on a lawn surrounded by mountains' },
+      { src: photo2, alt: 'Two members smiling together at an evening event' },
+      { src: photo3, alt: 'Members posing together outside a building' },
       { src: photo4, alt: 'Two friends celebrating graduation on campus' },
-      { src: photo5, alt: 'Members on a rocky outcrop at sunset' },
+      { src: photo5, alt: 'Two members in graduation stoles posing on campus' },
+      { src: photo6, alt: 'Members tossing their graduation stoles into the air on campus' },
     ],
   },
 

@@ -38,11 +38,12 @@
    */
   --gallery-image-height: clamp(90px, 24svh, 400px);
 
-  /* ---- For Students photo strip ---------------------------------------
-   * Height of each photo in the strip under "Hey Bruins!". The photos keep
-   * their own shape, so each one's width follows from this.
+  /* ---- About photo strip ----------------------------------------------
+   * Height of each photo in the strip under "Our Mission". The photos keep
+   * their own shape, so each one's width follows from this. The ceiling is
+   * Paper's 400px scaled from its 1336px column to the site's 1120px.
    */
-  --students-gallery-height: clamp(180px, 28vw, 320px);
+  --about-gallery-height: clamp(180px, 28vw, 335px);
 
   /* ---- Hero photo -----------------------------------------------------
    * The group photo in the hero, as a share of the page width. The second

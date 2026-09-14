@@ -48,6 +48,8 @@ src/
 - **Layout.** Content is centred at `--container-max` (1120px) with fluid gutters, so margins grow
   beyond that width rather than the content. Two elements opt out and span the full page by setting
   `--container-outer: 100%` on themselves: the home page hero, and the header that sits over it.
+  The self-scrolling photo strips (Home’s bio panel, About’s mission) sit outside the container
+  and also run edge to edge.
 - **Header.** Fixed to the top. It slides out of view as the reader scrolls down and returns on the
   first upward scroll (`lib/useHeaderVisibility.ts`), staying transparent over the hero and taking a
   translucent surface once scrolled.
@@ -69,8 +71,9 @@ contrast when scripting is unavailable.
 
 ## For Students
 
-The five welcome photos and print frame are optimized WebP assets in `assets/images/students/`.
-The mobile composition reflows into two columns; the cohort cards and application banner stack.
+The six welcome photos and print frame are optimized WebP assets in `assets/images/students/`.
+The prints scale with the content column and settle into two columns on phones; the cohort cards
+and application banner stack.
 
 The application URL is configured in `content/site.ts`. Newsletter signup uses
 `VITE_NEWSLETTER_FORM_ENDPOINT` (or `site.forms.newsletter`) and POSTs URL-encoded `name` and `email`.

@@ -1,46 +1,29 @@
-/*
- * Paper: the mission card sits label-left / copy-right with a wide gap between them, over a
- * 2×2 photo grid. Both collapse to a single column as the viewport narrows.
- */
-.card {
+.section {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  padding: clamp(28px, 3.4vw, 56px) clamp(20px, 3.6vw, 64px);
-  border-radius: var(--radius-xl);
-  background: var(--color-surface);
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
-/* Caps the measure so the copy stays readable instead of stretching the full card width. */
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.mission {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Paper runs the statement across ~62% of the measure; in `em` that holds ~70 characters a line. */
 .body {
-  flex: 0 1 min(100%, 54ch);
+  max-width: 35em;
 }
 
-@media (max-width: 700px) {
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-.photos {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(var(--space-3), 2.6vw, 36px);
-}
-
-.photo {
-  display: block;
-  width: 100%;
-  aspect-ratio: 650 / 419;
-  object-fit: cover;
-  border-radius: var(--radius-xl);
-}
-
-@media (max-width: 600px) {
-  .photos {
-    grid-template-columns: 1fr;
-  }
+/* Paper: rounded photos at their own shape, in a strip that runs the full width of the page. */
+.gallery {
+  --marquee-image-height: var(--about-gallery-height); /* styles/layout-scale.css */
+  --marquee-image-aspect: auto;
+  --marquee-image-radius: var(--radius-xl);
 }

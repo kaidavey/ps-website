@@ -1,12 +1,13 @@
 import { useState, type FormEvent } from 'react'
 import { site } from '@/content/site'
+import { cx } from '@/lib/cx'
 import { Button } from './Button'
 import { TextField } from './FormField'
 import { Section } from './Section'
 import { SectionHeader } from './SectionHeader'
 import styles from './Newsletter.module.css'
 
-export function Newsletter({ className }: { className?: string }) {
+export function Newsletter() {
   const { newsletter } = site
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
@@ -41,7 +42,7 @@ export function Newsletter({ className }: { className?: string }) {
   }
 
   return (
-    <Section aria-labelledby="newsletter-title" className={className}>
+    <Section aria-labelledby="newsletter-title">
       <SectionHeader id="newsletter-title" title={newsletter.title} subtitle={newsletter.subtitle} />
       <form className={styles.form} onSubmit={subscribe} aria-busy={status === 'sending'} aria-describedby="newsletter-status">
         <TextField label="Name" name="name" autoComplete="name" required className={styles.field} />
@@ -50,7 +51,7 @@ export function Newsletter({ className }: { className?: string }) {
           {status === 'sending' ? 'Subscribing…' : newsletter.submit}
         </Button>
       </form>
-      <p id="newsletter-status" role="status" className={styles.status}>{message}</p>
+      <p id="newsletter-status" role="status" className={cx('type-body', styles.status)}>{message}</p>
     </Section>
   )
 }

@@ -7,15 +7,14 @@ import styles from './ApplyBanner.module.css'
 interface ApplyBannerProps {
   /** Adds a secondary "Learn more" button linking here, beside Apply. */
   learnMoreTo?: string
-  className?: string
 }
 
 /** The "Applications Open" call to action: title and buttons on the left, copy on the right. */
-export function ApplyBanner({ learnMoreTo, className }: ApplyBannerProps) {
+export function ApplyBanner({ learnMoreTo }: ApplyBannerProps) {
   const { apply } = site
   return (
     <Container as="section" aria-labelledby="apply-title">
-      <div className={cx(styles.banner, className)}>
+      <div className={styles.banner}>
         <div className={styles.lead}>
           <h2 id="apply-title" className="type-subtitle">
             {apply.title}

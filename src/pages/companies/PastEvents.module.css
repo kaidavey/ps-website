@@ -14,8 +14,7 @@
 /* A shared height with `cover` keeps the row aligned while the columns differ in width. */
 .image {
   width: 100%;
-  height: auto;
-  aspect-ratio: 333 / 460;
+  height: clamp(240px, 32vw, 460px);
   object-fit: cover;
   object-position: top;
 }
@@ -24,7 +23,6 @@
 .item:last-child .image {
   border-radius: var(--radius-xl);
   object-position: 57.45% center;
-  aspect-ratio: 546 / 460;
 }
 
 .caption {

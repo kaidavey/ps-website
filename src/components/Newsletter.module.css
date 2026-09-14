@@ -20,5 +20,4 @@
 }
 
 .status:empty { display: none; }
-.status { font-size: var(--type-body-size); line-height: 1.5; }
 .submit:disabled { cursor: wait; opacity: .65; }

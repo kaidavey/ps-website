@@ -6,17 +6,16 @@ import { usePageTitle } from '@/lib/usePageTitle'
 import { Faq } from './Faq'
 import { Fellowship } from './Fellowship'
 import { Welcome } from './Welcome'
-import styles from './ForStudentsPage.module.css'
 
 export function ForStudentsPage() {
   usePageTitle(students.title)
   return (
-    <PageContent offsetHeader className={styles.page}>
+    <PageContent offsetHeader>
       <Welcome />
       <Fellowship />
-      <ApplyBanner className={styles.apply} />
+      <ApplyBanner />
       <Faq />
-      <Newsletter className={styles.newsletter} />
+      <Newsletter />
     </PageContent>
   )
 }

@@ -7,12 +7,11 @@ import { Partnerships } from './Partnerships'
 import { PastEvents } from './PastEvents'
 import { Testimonials } from './Testimonials'
 import { Timeline } from './Timeline'
-import styles from './ForCompaniesPage.module.css'
 
 export function ForCompaniesPage() {
   usePageTitle(companies.title)
   return (
-    <PageContent offsetHeader className={styles.page}>
+    <PageContent offsetHeader>
       <Overview />
       <Timeline />
       <Testimonials />

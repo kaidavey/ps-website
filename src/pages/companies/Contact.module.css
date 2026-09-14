@@ -1,9 +1,10 @@
-/* Follow the full fluid content width shared by both audience pages. */
+/* Paper: the form occupies ~65% of the measure rather than the full width. */
 .form {
   display: grid;
   gap: var(--space-4);
   justify-items: start;
   width: 100%;
+  max-width: 720px;
 }
 
 .fields {

@@ -1,5 +1,5 @@
 .section { display: flex; flex-direction: column; gap: var(--space-5); }
-.copy { display: grid; gap: clamp(36px, 4.24vw, 64px); }
+.copy { display: grid; gap: var(--space-6); }
 
 /* Positions are proportional to the Paper composition, so the photos scale with the page. */
 .gallery { position: relative; aspect-ratio: 1336 / 419; }

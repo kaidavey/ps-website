@@ -69,9 +69,6 @@ contrast when scripting is unavailable.
 
 ## For Students
 
-`components/MarketingPage.module.css` shares the Paper artboard’s larger type, fluid content
-width, and section spacing between For Students and For Companies. Each page composes this scale
-and adds its own component sizing. Other pages retain their default styles.
 The five welcome photos and print frame are optimized WebP assets in `assets/images/students/`.
 The mobile composition reflows into two columns; the cohort cards and application banner stack.
 

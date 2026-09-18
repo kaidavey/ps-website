@@ -49,5 +49,5 @@
    * The group photo in the hero, as a share of the page width. The second
    * number is the ceiling in pixels, so it stops growing on large monitors.
    */
-  --hero-photo-width: min(52%, 750px);
+  --hero-photo-width: min(70%, 1000px);
 }

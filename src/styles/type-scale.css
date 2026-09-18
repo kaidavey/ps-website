@@ -26,7 +26,7 @@
 :root {
   /* ---- Font family --------------------------------------------------- */
   /* Helvetica Neue ships on Apple devices; Inter is the self-hosted fallback. */
-  --font-sans: 'Helvetica Neue', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: "Helvetica Neue", "Inter", system-ui, -apple-system, sans-serif;
 
   /* ---- Available weights --------------------------------------------- */
   --font-weight-light: 300;
@@ -35,7 +35,7 @@
   --font-weight-bold: 700;
 
   /* ---- DISPLAY — the "product space" wordmark in the hero -------------- */
-  --type-display-size: 6.5rem; /* 104px */
+  --type-display-size: 8.5rem; /* 104px */
   --type-display-leading: 1.1;
   --type-display-weight: var(--font-weight-bold);
   --type-display-tracking: -0.05em;
@@ -59,12 +59,14 @@
 
   /* ---- HEADING — section headings, e.g. "How It Works" ---------------- */
   --type-heading-size: 1.625rem; /* 26px */
+
   --type-heading-leading: 1.25;
   --type-heading-weight: var(--font-weight-medium);
   --type-heading-tracking: -0.02em;
 
   /* ---- SUBTITLE — the muted line under a section heading -------------- */
-  --type-subtitle-size: 1.25rem; /* 20px */
+  /*--type-subtitle-size: 1.25rem; /* 20px */
+  --type-subtitle-size: 2rem;
   --type-subtitle-leading: 1.4;
   --type-subtitle-weight: var(--font-weight-regular);
   --type-subtitle-tracking: -0.02em;

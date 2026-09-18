@@ -10,7 +10,7 @@ export const home = {
   hero: {
     title: 'product space',
     tagline: 'Building the Next Generation of Tech Leaders',
-    prompt: 'Have a project in mind? Let’s chat!',
+    prompt: 'Have a project in mind? Let’s chat!',
     cta: { label: 'Learn more', to: '/for-companies' },
     imageAlt: 'The Product Space at UCLA fellows, gathered for a group photo in graduation sashes.',
   },

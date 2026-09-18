@@ -73,8 +73,8 @@
 .glow::before {
   content: '';
   position: absolute;
-  inset: -30% -10%;
-  opacity: 0.55;
+  inset: -100% -10% -30% -10%;
+  opacity: 0.42;
   filter: blur(56px);
   background:
     radial-gradient(closest-side, var(--color-glow-pink), transparent) 0% 60% / 50% 90% no-repeat,

@@ -15,7 +15,7 @@ export function Hero() {
           <h1 id="hero-title">
             <img className={styles.title} src={heroTitle} alt={hero.title} />
           </h1>
-          <p className={cx("type-subtitle", styles.tagline)}>{hero.tagline}</p>
+          <p className={styles.tagline}>{hero.tagline}</p>
         </div>
 
         <div className={styles.prompt}>

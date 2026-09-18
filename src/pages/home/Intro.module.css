@@ -16,6 +16,10 @@
   overflow: hidden;
 }
 
+.gallery {
+  padding-top: 10px;
+}
+
 /* Both widths are set in styles/layout-scale.css. */
 .text p {
   max-width: var(--bio-column-1);

@@ -65,8 +65,8 @@
   --type-heading-tracking: -0.02em;
 
   /* ---- SUBTITLE — the muted line under a section heading -------------- */
-  /*--type-subtitle-size: 1.25rem; /* 20px */
-  --type-subtitle-size: 2rem;
+  --type-subtitle-size: 1.25rem; /* 20px */
+
   --type-subtitle-leading: 1.4;
   --type-subtitle-weight: var(--font-weight-regular);
   --type-subtitle-tracking: -0.02em;

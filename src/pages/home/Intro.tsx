@@ -19,7 +19,7 @@ export function Intro() {
         <Container>
           <RevealText paragraphs={home.intro} className={cx('type-lead', styles.text)} />
         </Container>
-        <PhotoMarquee photos={home.gallery} />
+        <PhotoMarquee photos={home.gallery} className={styles.gallery} />
       </div>
     </section>
   )

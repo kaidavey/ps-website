@@ -33,7 +33,12 @@
   height: calc(var(--type-display-size) * var(--type-display-leading) * 0.85);
 }
 
+/* One-off, larger than the shared type-subtitle role (which stays at 1.25rem). */
 .tagline {
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: -0.02em;
   color: var(--color-grey);
 }
 

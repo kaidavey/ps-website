@@ -33,8 +33,9 @@
   padding-block: var(--header-pad);
 }
 
-/* Muted until pointed at, then full black. */
+/* Muted until pointed at, then the full-colour mark crossfades in. */
 .home {
+  position: relative;
   display: block;
   color: var(--color-grey-dark);
   transition: color var(--motion-fast);
@@ -48,6 +49,26 @@
 .logo {
   height: var(--logo-height);
   width: auto;
+  transition: opacity var(--motion-fast);
+}
+
+.logoColor {
+  position: absolute;
+  inset: 0;
+  height: var(--logo-height);
+  width: auto;
+  opacity: 0;
+  transition: opacity var(--motion-fast);
+}
+
+.home:hover .logo,
+.home:focus-visible .logo {
+  opacity: 0;
+}
+
+.home:hover .logoColor,
+.home:focus-visible .logoColor {
+  opacity: 1;
 }
 
 .toggle {

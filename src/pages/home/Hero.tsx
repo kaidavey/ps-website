@@ -9,7 +9,7 @@ import styles from "./Hero.module.css";
 export function Hero() {
   const { hero } = home;
   return (
-    <section className={styles.hero} aria-labelledby="hero-title">
+    <section className={styles.hero} aria-labelledby="hero-title" data-no-reveal>
       <Container className={styles.inner}>
         <div className={styles.copy}>
           <h1 id="hero-title">

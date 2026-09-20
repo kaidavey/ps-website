@@ -124,6 +124,36 @@ button {
   translate: 0;
 }
 
+/*
+ * Applied by useScrollReveal. JS toggles `.is-visible` on and off as each section crosses into
+ * and out of view, so the fade repeats on every pass; if JS never runs, sections simply stay
+ * visible, since this class (and the hidden state it sets up) is never added in the first place.
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(64px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*
+ * `will-change` is added by JS only while a section is actually animating (see
+ * useScrollReveal) and removed once it settles. Leaving it on permanently, on every section on
+ * the page at once, forces the browser to keep each one on its own composited layer for the
+ * whole session — with several image-heavy sections doing that simultaneously, that's what was
+ * making scrolling choppy.
+ */
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.reveal-instant {
+  transition: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

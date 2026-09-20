@@ -14,7 +14,7 @@ export function Intro() {
   const trackRef = useScrollProgress<HTMLElement>()
 
   return (
-    <section ref={trackRef} className={styles.intro} aria-label="About Product Space">
+    <section ref={trackRef} className={styles.intro} aria-label="About Product Space" data-no-reveal>
       <div className={styles.panel}>
         <Container>
           <RevealText paragraphs={home.intro} className={cx('type-lead', styles.text)} />

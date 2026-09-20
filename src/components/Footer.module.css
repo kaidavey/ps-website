@@ -53,12 +53,12 @@
 }
 
 .link {
-  transition: opacity var(--motion-fast);
+  transition: color var(--motion-fast);
 }
 
 .link:hover,
 .link:focus-visible {
-  opacity: 0.6;
+  color: var(--color-accent);
 }
 
 /* Soft colour wash across the bottom of the page. */

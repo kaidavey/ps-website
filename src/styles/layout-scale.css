@@ -34,9 +34,11 @@
 
   /* ---- Photo strip ----------------------------------------------------
    * Height of each photo in the self-scrolling strip under the bio. Width
-   * follows automatically at a 3:2 crop.
+   * follows automatically at a 3:2 crop. Sized so three photos plus their
+   * two gaps span the full screen width, capped so it doesn't overflow
+   * the pinned panel's height on shorter screens.
    */
-  --gallery-image-height: clamp(90px, 24svh, 400px);
+  --gallery-image-height: clamp(140px, calc((100vw - 2 * var(--space-4)) / 4.5), min(38svh, 460px));
 
   /* ---- About photo strip ----------------------------------------------
    * Height of each photo in the strip under "Our Mission". The photos keep
@@ -49,5 +51,5 @@
    * The group photo in the hero, as a share of the page width. The second
    * number is the ceiling in pixels, so it stops growing on large monitors.
    */
-  --hero-photo-width: min(52%, 750px);
+  --hero-photo-width: min(70%, 1000px);
 }

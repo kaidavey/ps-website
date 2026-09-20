@@ -1,50 +1,54 @@
 /** Site-wide content: navigation, links, and integration endpoints. */
 export const site = {
-  name: 'Product Space',
-  tagline: 'Building the Next Generation of Tech Leaders',
-  org: 'University of California, Los Angeles',
+  name: "Product Space",
+  tagline: "Building the Next Generation of Tech Leaders",
+  org: "University of California, Los Angeles",
   description:
-    'Product Space at UCLA is a year-long fellowship for aspiring product managers, designers, and marketers.',
+    "Product Space at UCLA is a year-long fellowship for aspiring product managers, designers, and marketers.",
 
   nav: [
-    { label: 'Home', to: '/' },
-    { label: 'About', to: '/about' },
-    { label: 'For Students', to: '/for-students' },
-    { label: 'For Companies', to: '/for-companies' },
+    { label: "Home", to: "/" },
+    { label: "About", to: "/about" },
+    { label: "For Students", to: "/for-students" },
+    { label: "For Companies", to: "/for-companies" },
   ],
 
   social: [
-    { label: 'Instagram', href: 'https://www.instagram.com/productspaceatucla/' },
-    { label: 'Luma', href: 'https://luma.com/productspaceucla' },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/productspaceatucla/",
+    },
+    { label: "Luma", href: "https://luma.com/productspaceucla" },
   ],
 
   /** The Applications Open banner, shown on Home and For Students. */
   apply: {
-    title: 'Applications Open',
+    title: "Applications Open",
     paragraphs: [
-      'Fall Quarter is right around the corner and we are taking applicants! Start by filling out our interest form.',
-      'Remember, any major and any skill level can join! We’d love to see your application.',
+      "Fall Quarter is right around the corner and we are taking applicants! **Start by filling out our interest form.**",
+      "Remember, **any major** and **any skill level** can join! We’d love to see your application.",
     ],
-    primary: 'Apply',
-    secondary: 'Learn more',
+    primary: "Apply",
+    secondary: "Learn more",
   },
 
   /** The newsletter sign-up, shown on Home and For Students. */
   newsletter: {
-    title: 'Join Our Newsletter',
+    title: "Join Our Newsletter",
     subtitle:
-      'All UCLA students (including non-fellows) can tune into our monthly newsletter exploring recent product news and career guidance.',
-    submit: 'Subscribe',
+      "All UCLA students (including non-fellows) can tune into our monthly newsletter exploring recent product news and career guidance.",
+    submit: "Subscribe",
   },
 
   events: {
-    calendarUrl: 'https://luma.com/productspaceucla',
-    feedUrl: '/api/luma-calendar',
-    embedUrl: 'https://luma.com/embed/calendar/cal-TH7D6gDn85lzYyk/events',
+    calendarUrl: "https://luma.com/productspaceucla",
+    feedUrl: "/api/luma-calendar",
+    embedUrl: "https://luma.com/embed/calendar/cal-TH7D6gDn85lzYyk/events",
   },
 
   links: {
-    apply: 'https://docs.google.com/forms/d/e/1FAIpQLSeFxgcWagqbIe5B-suR2Df052eMjwc-NtWpPU6jYDN2zbUaZQ/viewform?usp=header',
+    apply:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeFxgcWagqbIe5B-suR2Df052eMjwc-NtWpPU6jYDN2zbUaZQ/viewform?usp=header",
   },
 
   /**
@@ -52,7 +56,7 @@ export const site = {
    * plain HTML forms, so any endpoint that accepts x-www-form-urlencoded works. Empty = not wired.
    */
   forms: {
-    newsletter: '',
-    contact: '',
+    newsletter: "",
+    contact: "",
   },
-} as const
+} as const;

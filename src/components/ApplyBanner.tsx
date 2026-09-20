@@ -9,6 +9,11 @@ interface ApplyBannerProps {
   learnMoreTo?: string
 }
 
+/** Turns `**text**` markers in copy into bolded spans. */
+function withBold(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) => (i % 2 === 1 ? <strong key={i}>{part}</strong> : part))
+}
+
 /** The "Applications Open" call to action: title and buttons on the left, copy on the right. */
 export function ApplyBanner({ learnMoreTo }: ApplyBannerProps) {
   const { apply } = site
@@ -30,7 +35,7 @@ export function ApplyBanner({ learnMoreTo }: ApplyBannerProps) {
         </div>
         <div className={cx('type-body', styles.copy)}>
           {apply.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>{withBold(paragraph)}</p>
           ))}
         </div>
       </div>

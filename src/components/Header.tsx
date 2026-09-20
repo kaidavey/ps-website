@@ -1,5 +1,6 @@
 import { useEffect, useId, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logoColor from '@/assets/images/logo-color.svg'
 import { site } from '@/content/site'
 import { cx } from '@/lib/cx'
 import { useHeaderVisibility } from '@/lib/useHeaderVisibility'
@@ -32,6 +33,7 @@ export function Header() {
       <Container className={styles.bar}>
         <Link to="/" className={styles.home} aria-label={`${site.name} home`} onClick={close}>
           <Logo className={styles.logo} />
+          <img src={logoColor} alt="" aria-hidden="true" className={styles.logoColor} />
         </Link>
         <button
           type="button"

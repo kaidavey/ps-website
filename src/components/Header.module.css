@@ -6,6 +6,10 @@
   /* Spans the full width, lining up with the hero it sits over. */
   --container-outer: 100%;
 
+  /* Menu overlay timing: how long the panel takes to drop, and how long the links wait for it. */
+  --menu-slide: 380ms;
+  --menu-links-delay: 260ms;
+
   position: fixed;
   inset: 0 0 auto;
   z-index: 20;
@@ -91,12 +95,27 @@
   height: 17px;
 }
 
+/*
+ * The panel drops in from the top of the screen. `visibility` is what keeps it out of reach when
+ * closed, and it transitions on a delay of its own: the panel stays visible for the whole slide
+ * out, then hides at the end.
+ */
 .menu {
   position: fixed;
   inset: 0;
   z-index: 1;
   overflow-y: auto;
   background: var(--color-bg);
+  visibility: hidden;
+  translate: 0 -100%;
+  transition:
+    translate var(--menu-slide) cubic-bezier(0.4, 0, 0.2, 1),
+    visibility var(--menu-slide);
+}
+
+.open .menu {
+  visibility: visible;
+  translate: 0;
 }
 
 .menuInner {
@@ -107,6 +126,22 @@
   min-height: 100%;
   padding-top: calc(var(--header-height) + var(--space-5));
   padding-bottom: var(--space-6);
+
+  /* Closing: the links go first, quickly, so the panel isn't still carrying text as it leaves. */
+  opacity: 0;
+  translate: 0 6px;
+  transition:
+    opacity 140ms ease,
+    translate 140ms ease;
+}
+
+/* Opening: held back until the panel has all but landed, then a slight fade up. */
+.open .menuInner {
+  opacity: 1;
+  translate: 0;
+  transition:
+    opacity 260ms ease var(--menu-links-delay),
+    translate 260ms ease var(--menu-links-delay);
 }
 
 .primary {
@@ -145,5 +180,17 @@
 @media (prefers-reduced-motion: reduce) {
   .hidden {
     translate: 0;
+  }
+
+  /* No slide and no delay: the panel and its links are simply there, or not. */
+  .menu,
+  .open .menu {
+    translate: 0;
+  }
+
+  .menuInner,
+  .open .menuInner {
+    translate: 0;
+    transition-delay: 0s;
   }
 }

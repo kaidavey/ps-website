@@ -47,7 +47,12 @@ export function Header() {
         </button>
       </Container>
 
-      <nav id={menuId} className={styles.menu} aria-label="Site" hidden={!open}>
+      {/*
+        * Kept in the DOM and hidden with `visibility` rather than the `hidden` attribute, so the
+        * panel can slide out on close instead of vanishing. `visibility: hidden` still takes it
+        * out of the tab order and away from screen readers.
+        */}
+      <nav id={menuId} className={styles.menu} aria-label="Site">
         <Container className={styles.menuInner}>
           <ul className={styles.primary}>
             {site.nav.map((item) => (
@@ -55,7 +60,7 @@ export function Header() {
                 <NavLink
                   to={item.to}
                   end={item.to === '/'}
-                  className={({ isActive }) => cx('type-title', styles.primaryLink, isActive && styles.active)}
+                  className={({ isActive }) => cx('type-menu', styles.primaryLink, isActive && styles.active)}
                   onClick={close}
                 >
                   {item.label}

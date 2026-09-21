@@ -4,6 +4,7 @@
  * This file only wires the values up; it holds no sizes of its own.
  */
 .type-display,
+.type-menu,
 .type-title,
 .type-lead,
 .type-heading,
@@ -21,6 +22,7 @@
  * keep the `pretty` default from base.css instead.
  */
 .type-display,
+.type-menu,
 .type-title,
 .type-lead,
 .type-heading,
@@ -34,6 +36,13 @@
   line-height: var(--type-display-leading);
   font-weight: var(--type-display-weight);
   letter-spacing: var(--type-display-tracking);
+}
+
+.type-menu {
+  font-size: var(--type-menu-size);
+  line-height: var(--type-menu-leading);
+  font-weight: var(--type-menu-weight);
+  letter-spacing: var(--type-menu-tracking);
 }
 
 .type-title {

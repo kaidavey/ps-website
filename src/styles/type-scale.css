@@ -46,6 +46,13 @@
   --type-title-weight: var(--font-weight-bold);
   --type-title-tracking: -0.045em;
 
+  /* ---- MENU — the four page links in the hamburger menu --------------- */
+  /* This is the size to change to make the menu links bigger or smaller. */
+  --type-menu-size: 5rem; /* 64px */
+  --type-menu-leading: 1.12;
+  --type-menu-weight: var(--font-weight-bold);
+  --type-menu-tracking: -0.045em;
+
   /* ---- LEAD — the large bio statements under the hero ----------------- */
   /*
    * The only role capped by viewport HEIGHT rather than a plain length. The bio shares a pinned,
@@ -99,7 +106,7 @@
 
 /*
  * ---- Step-downs for narrow screens ----------------------------------------
- * Only the four largest roles appear here. Body, heading, subtitle and label
+ * Only the five largest roles appear here. Body, heading, subtitle and label
  * deliberately keep one size at every width. Add a role to these blocks if you
  * want it to shrink on smaller screens too.
  */
@@ -108,6 +115,7 @@
 @media (max-width: 900px) {
   :root {
     --type-display-size: 4.5rem; /* 72px */
+    --type-menu-size: 3.25rem; /* 52px */
     --type-title-size: 2.5rem; /* 40px */
     --type-lead-size: 2.25rem; /* 36px */
     --type-stat-size: 2.375rem; /* 38px */
@@ -118,6 +126,7 @@
 @media (max-width: 600px) {
   :root {
     --type-display-size: 2.875rem; /* 46px */
+    --type-menu-size: 2.5rem; /* 40px */
     --type-title-size: 2rem; /* 32px */
     --type-lead-size: 1.75rem; /* 28px */
     --type-stat-size: 2rem; /* 32px */

@@ -8,12 +8,14 @@ export function Timeline() {
   const { timeline } = companies
   const lastIndex = timeline.steps.length - 1
   return (
-    <Section aria-labelledby="timeline-title">
-      <h2 id="timeline-title" className="type-heading">
+    // Long enough that one fade would cover most of a screen: heading, steps and note each
+    // reveal on their own.
+    <Section aria-labelledby="timeline-title" data-no-reveal>
+      <h2 id="timeline-title" className="type-heading" data-reveal>
         {timeline.title}
       </h2>
 
-      <div className={styles.steps}>
+      <div className={styles.steps} data-reveal>
         <div className={styles.track} aria-hidden="true">
           {timeline.steps.map((step, index) => (
             <span key={step.title} className={styles.marker} style={{ '--t': index / lastIndex } as CSSProperties} />
@@ -32,7 +34,9 @@ export function Timeline() {
         </ol>
       </div>
 
-      <p className="type-body">{timeline.note}</p>
+      <p className="type-body" data-reveal>
+        {timeline.note}
+      </p>
     </Section>
   )
 }

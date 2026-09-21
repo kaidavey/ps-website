@@ -8,9 +8,10 @@ import styles from './Faq.module.css'
 export function Faq() {
   const { faq } = students
   return (
-    <Section aria-labelledby="faq-title">
-      <SectionHeader id="faq-title" title={faq.title} />
-      <div className={styles.list}>
+    // The full question list runs past a screen, so the heading and the list reveal separately.
+    <Section aria-labelledby="faq-title" data-no-reveal>
+      <SectionHeader id="faq-title" title={faq.title} data-reveal />
+      <div className={styles.list} data-reveal>
         {faq.items.map((item) => (
           <details key={item.question} className={styles.item}>
             <summary className={styles.question}>

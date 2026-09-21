@@ -45,7 +45,6 @@ export function Events() {
           )}
         </div>
         <div className={styles.results}>
-          <p className={styles.caption}>All upcoming events</p>
           <iframe
             src={site.events.embedUrl}
             title="Product Space UCLA upcoming events on Luma"

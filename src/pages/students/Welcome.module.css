@@ -16,6 +16,10 @@
 .gallery {
   position: relative;
   aspect-ratio: 1336 / 419;
+
+  /* The prints deal themselves out left to right shortly after the page arrives. */
+  --pop-delay: 0.35s;
+  --pop-step: 0.09s;
 }
 
 .print {
@@ -32,6 +36,40 @@
 .print:nth-child(4) { left: 50.16%; top: 22.13%; rotate: 2.76deg; }
 .print:nth-child(5) { left: 66.73%; top: -0.24%; rotate: 4.94deg; }
 .print:nth-child(6) { left: 81.76%; top: 19.29%; rotate: -4deg; }
+
+/*
+ * `backwards` holds each print at the keyframe's starting state through its delay, so they stay
+ * out of sight until their turn rather than all showing and then popping.
+ */
+.pop {
+  position: absolute;
+  inset: 0;
+  animation: print-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation-delay: calc(var(--pop-delay) + var(--index) * var(--pop-step));
+}
+
+/* The overshoot lives in the easing, so the keyframes stay a plain from/to. */
+@keyframes print-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.86);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * The global reduced-motion rule only collapses the duration; the delay would still hold each
+ * print invisible for up to a second, so drop the animation outright.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .pop {
+    animation: none;
+  }
+}
 
 .frame {
   position: absolute;

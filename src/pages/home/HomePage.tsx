@@ -15,7 +15,7 @@ export function HomePage() {
       <Intro />
       <PageContent>
         <Pillars />
-        <ApplyBanner learnMoreTo="/for-students" />
+        <ApplyBanner />
         <Events />
         <Newsletter />
       </PageContent>

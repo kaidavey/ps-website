@@ -25,11 +25,11 @@ export const site = {
   apply: {
     title: "Applications Open",
     paragraphs: [
-      "Fall Quarter is right around the corner and we are taking applicants! **Start by filling out our interest form.**",
-      "Remember, **any major** and **any skill level** can join! We’d love to see your application.",
+      "Fall Quarter is here and we're **actively taking applicants!** Apply now, and **fill out our interest form** to stay on top of recruitment events.",
+      "Remember, **any major and any skill level** can join! We'd love to see your application.",
     ],
     primary: "Apply",
-    secondary: "Learn more",
+    secondary: "Interest form",
   },
 
   /** The newsletter sign-up, shown on Home and For Students. */
@@ -49,6 +49,8 @@ export const site = {
   links: {
     apply:
       "https://docs.google.com/forms/d/e/1FAIpQLSeFxgcWagqbIe5B-suR2Df052eMjwc-NtWpPU6jYDN2zbUaZQ/viewform?usp=header",
+    interestForm:
+      "https://docs.google.com/forms/d/e/1FAIpQLSfdoz5kdeW2nwDlF-KdBPubIu6Dm7n51Nn8MGu6qtlVt8k8DA/viewform?usp=header",
   },
 
   /**

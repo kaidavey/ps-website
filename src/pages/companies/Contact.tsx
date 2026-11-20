@@ -46,6 +46,13 @@ export function Contact() {
     <Section id="contact" aria-labelledby="contact-title">
       <SectionHeader id="contact-title" title={contact.title} subtitle={contact.subtitle} />
       <form className={styles.form} onSubmit={submit} aria-busy={sending}>
+        {/* Honeypot. Name must match HONEYPOT_FIELD in api/contact.ts. */}
+        <div className="visually-hidden" aria-hidden="true">
+          <label>
+            Website
+            <input name="ps_leave_blank" type="text" tabIndex={-1} autoComplete="off" />
+          </label>
+        </div>
         <div className={styles.fields}>
           <TextField label="Name" name="name" autoComplete="name" required />
           <TextField label="Email" name="email" type="email" autoComplete="email" required />

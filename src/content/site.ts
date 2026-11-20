@@ -56,9 +56,10 @@ export const site = {
   /**
    * Form endpoints (e.g. Formspree, Netlify Forms, a Google Apps Script). Forms POST here as
    * plain HTML forms, so any endpoint that accepts x-www-form-urlencoded works. Empty = not wired.
+   * `contact` is the same-origin `/api/contact` function, which forwards to CONTACT_GAS_URL.
    */
   forms: {
     newsletter: "",
-    contact: "",
+    contact: "/api/contact",
   },
 } as const;

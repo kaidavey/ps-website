@@ -82,6 +82,12 @@ accepting the signup. Without an endpoint, the form reports that signup is unava
 nothing. Loading, failure, timeout, and success states are handled in `components/Newsletter.tsx`.
 The FAQ copy is provisional because the Paper artboard contains placeholder questions.
 
+## For Companies
+
+The Let’s Chat form on `/for-companies` (`#contact`) posts to `/api/contact`. That function checks the submission and appends a row through a Google Apps Script web app. The script URL is the server-only env var `CONTACT_GAS_URL` (Production and Preview). It is not a `VITE_` variable, so it is not in the client bundle. Without it, `/api/contact` returns 503 and the form shows its existing failure message.
+
+Sheet, script, and Vercel setup steps are in `scripts/google-apps-script/README.md`. The newsletter form is unchanged. `node --test tests/contact-form.test.ts` covers validation and the missing-env error without calling Google. The dev and preview servers handle `POST /api/contact` with the same function.
+
 ## Live events
 
 Home’s Upcoming Events section uses the Product Space UCLA public iCal feed. The existing mini
